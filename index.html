@@ -1,0 +1,1340 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#1A2F50" />
+    <title>Albert Serrurier — Inviolable. Par essence.</title>
+    <meta
+      name="description"
+      content="Ouverture, réparation, installation de serrures. Quinze ans d'atelier. Devis gratuit, prix fixe annoncé, sans dégât. Disponible 24/7 en Savoie, Haute-Savoie et au Mans."
+    />
+    <link rel="icon" href="./logo.png" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..600&display=swap"
+      rel="stylesheet"
+    />
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              background: '#ffffff',
+              cream: '#FAF7F2',
+              surface: '#f5f5f7',
+              foreground: '#1A2F50',
+              navy: '#1A2F50',
+              'navy-deep': '#142442',
+              muted: '#6e6e73',
+              dark: '#0a0a0a',
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      :root {
+        --color-background: #ffffff;
+        --color-cream: #FAF7F2;
+        --color-surface: #f5f5f7;
+        --color-navy: #1a2f50;
+        --color-navy-deep: #142442;
+        --color-muted: #6e6e73;
+        --color-dark: #0a0a0a;
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+      html, body {
+        margin: 0;
+        padding: 0;
+        background: #ffffff;
+        color: #1a2f50;
+        font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text',
+          'Helvetica Neue', Helvetica, Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
+        overflow-x: hidden;
+      }
+
+      .font-display {
+        font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
+        letter-spacing: -0.025em;
+      }
+      .font-body {
+        font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
+      }
+      .font-serif {
+        font-family: 'Fraunces', 'Hoefler Text', Georgia, serif;
+        font-feature-settings: 'ss01' 1, 'ss02' 1;
+      }
+
+      /* ===== Hero ===== */
+      .hero-shell {
+        position: relative;
+        width: 100%;
+        min-height: 100vh;
+        min-height: 100svh;
+        overflow: hidden;
+        background: #ffffff;
+      }
+      .video-layer {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        overflow: hidden;
+      }
+      #bgVideo {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
+
+      /* ===== Sticky nav ===== */
+      .top-nav {
+        position: fixed;
+        top: 0; left: 0; right: 0;
+        z-index: 50;
+        transition: background-color 0.3s ease, backdrop-filter 0.3s ease, border-color 0.3s ease;
+        border-bottom: 1px solid transparent;
+      }
+      .top-nav.scrolled {
+        background-color: rgba(255, 255, 255, 0.78);
+        backdrop-filter: saturate(180%) blur(20px);
+        -webkit-backdrop-filter: saturate(180%) blur(20px);
+        border-bottom-color: rgba(26, 47, 80, 0.08);
+      }
+
+      /* ===== Buttons ===== */
+      .btn-primary {
+        background: #1a2f50;
+        color: #fff;
+        font-weight: 500;
+        transition: background 0.2s ease, transform 0.2s ease;
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .btn-primary:hover { background: #142442; }
+
+      .btn-light {
+        background: #ffffff;
+        color: #1a2f50;
+        font-weight: 500;
+        transition: opacity 0.2s ease;
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .btn-light:hover { opacity: 0.88; }
+
+      /* ===== Animations ===== */
+      @keyframes fadeRise {
+        from { opacity: 0; transform: translateY(20px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
+      .animate-fade-rise         { opacity: 0; animation: fadeRise 0.8s cubic-bezier(0.42, 0, 0.58, 1) forwards; }
+      .animate-fade-rise-delay   { opacity: 0; animation: fadeRise 0.8s cubic-bezier(0.42, 0, 0.58, 1) 0.15s forwards; }
+      .animate-fade-rise-delay-2 { opacity: 0; animation: fadeRise 0.8s cubic-bezier(0.42, 0, 0.58, 1) 0.3s forwards; }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(28px);
+        transition: opacity 0.9s cubic-bezier(0.42, 0, 0.58, 1),
+                    transform 0.9s cubic-bezier(0.42, 0, 0.58, 1);
+      }
+      .reveal.visible { opacity: 1; transform: translateY(0); }
+
+      .reveal-stagger > * {
+        opacity: 0;
+        transform: translateY(22px);
+        transition: opacity 0.7s cubic-bezier(0.42, 0, 0.58, 1),
+                    transform 0.7s cubic-bezier(0.42, 0, 0.58, 1);
+      }
+      .reveal-stagger.visible > *:nth-child(1) { transition-delay: 0s; }
+      .reveal-stagger.visible > *:nth-child(2) { transition-delay: 0.08s; }
+      .reveal-stagger.visible > *:nth-child(3) { transition-delay: 0.16s; }
+      .reveal-stagger.visible > *:nth-child(4) { transition-delay: 0.24s; }
+      .reveal-stagger.visible > *:nth-child(5) { transition-delay: 0.32s; }
+      .reveal-stagger.visible > *:nth-child(6) { transition-delay: 0.40s; }
+      .reveal-stagger.visible > *:nth-child(7) { transition-delay: 0.48s; }
+      .reveal-stagger.visible > * { opacity: 1; transform: translateY(0); }
+
+      @media (prefers-reduced-motion: reduce) {
+        .animate-fade-rise, .animate-fade-rise-delay, .animate-fade-rise-delay-2,
+        .reveal, .reveal-stagger > * {
+          animation: none;
+          opacity: 1;
+          transform: none;
+        }
+      }
+
+      /* ===== Section marker ===== */
+      .section-marker {
+        position: absolute;
+        top: 24px;
+        left: 24px;
+        font-family: 'Fraunces', serif;
+        font-style: italic;
+        font-size: 13px;
+        color: rgba(26, 47, 80, 0.4);
+        letter-spacing: 0.05em;
+      }
+      .section-marker.on-dark { color: rgba(255, 255, 255, 0.35); }
+      @media (max-width: 1024px) { .section-marker { display: none; } }
+
+      /* ===== Ornament ===== */
+      .ornament {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+        padding: 28px 0;
+      }
+      .ornament-line { width: 48px; height: 1px; background: rgba(26, 47, 80, 0.18); }
+      .ornament-dot { width: 5px; height: 5px; border-radius: 50%; background: #1a2f50; opacity: 0.6; }
+
+      @keyframes ping { 75%, 100% { transform: scale(2.5); opacity: 0; } }
+
+      /* ===== Marquee ===== */
+      .marquee {
+        overflow: hidden;
+        position: relative;
+        mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+        -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+      }
+      .marquee-track {
+        display: flex;
+        gap: 40px;
+        animation: marquee 36s linear infinite;
+        width: max-content;
+      }
+      @media (min-width: 768px) {
+        .marquee-track { gap: 56px; animation-duration: 32s; }
+      }
+      .marquee:hover .marquee-track { animation-play-state: paused; }
+      @keyframes marquee {
+        from { transform: translateX(0); }
+        to   { transform: translateX(-50%); }
+      }
+
+      /* ===== Service rows (sans image, num typographique) ===== */
+      .service-row {
+        position: relative;
+        padding-top: 48px;
+        padding-bottom: 48px;
+        border-top: 1px solid rgba(26, 47, 80, 0.1);
+      }
+      @media (min-width: 768px) {
+        .service-row { padding-top: 80px; padding-bottom: 80px; }
+      }
+      .service-row:last-child { border-bottom: 1px solid rgba(26, 47, 80, 0.1); }
+
+      .service-num {
+        font-family: -apple-system, 'SF Pro Display', sans-serif;
+        font-weight: 700;
+        font-size: clamp(72px, 14vw, 160px);
+        line-height: 0.85;
+        letter-spacing: -0.05em;
+        color: #1A2F50;
+        opacity: 0.08;
+      }
+      @media (min-width: 1024px) {
+        .service-num { font-size: clamp(120px, 12vw, 200px); }
+      }
+
+      /* ===== Albert (l'unique image-portrait) ===== */
+      .albert-portrait {
+        position: relative;
+        aspect-ratio: 4 / 5;
+        background: #1A2F50 url('./portrait-albert.png') center/cover no-repeat;
+        border-radius: 4px;
+        overflow: hidden;
+      }
+      .albert-portrait::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at 50% 30%, transparent 50%, rgba(10, 10, 10, 0.12) 100%);
+        pointer-events: none;
+      }
+      .signature {
+        font-family: 'Fraunces', cursive;
+        font-style: italic;
+        font-weight: 400;
+        font-size: 28px;
+        color: #1A2F50;
+      }
+      @media (min-width: 768px) { .signature { font-size: 32px; } }
+
+      /* ===== Hero section "L'objet" (image unique signature) ===== */
+      .hero-object {
+        position: relative;
+        aspect-ratio: 16 / 9;
+        background: #f5f5f7 url('./service-03-installation.png') center/cover no-repeat;
+        border-radius: 0;
+        overflow: hidden;
+      }
+      @media (min-width: 768px) {
+        .hero-object {
+          aspect-ratio: 21 / 9;
+          border-radius: 24px;
+        }
+      }
+
+      /* ===== Big "15" ===== */
+      .big-stat-shell { position: relative; overflow: hidden; }
+      .big-15 {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-family: -apple-system, 'SF Pro Display', sans-serif;
+        font-weight: 700;
+        font-size: clamp(220px, 50vw, 720px);
+        line-height: 0.78;
+        letter-spacing: -0.06em;
+        color: rgba(26, 47, 80, 0.055);
+        z-index: 0;
+        pointer-events: none;
+        user-select: none;
+      }
+
+      /* ===== Map ===== */
+      .france-map { width: 100%; height: auto; }
+      .map-zone {
+        fill: rgba(26, 47, 80, 0.06);
+        stroke: rgba(26, 47, 80, 0.18);
+        stroke-width: 0.5;
+      }
+      .map-marker-circle { fill: #1A2F50; }
+      .map-marker-pulse {
+        fill: #1A2F50;
+        opacity: 0.4;
+        animation: mapPulse 2.4s ease-out infinite;
+      }
+      @keyframes mapPulse {
+        0%   { r: 8; opacity: 0.45; }
+        100% { r: 28; opacity: 0; }
+      }
+
+      /* ===== FAQ ===== */
+      details {
+        border-top: 1px solid rgba(26, 47, 80, 0.12);
+        padding: 22px 0;
+      }
+      @media (min-width: 768px) { details { padding: 28px 0; } }
+      details:last-of-type { border-bottom: 1px solid rgba(26, 47, 80, 0.12); }
+      details summary {
+        list-style: none;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        font-size: 17px;
+        font-weight: 500;
+        color: #1A2F50;
+        letter-spacing: -0.01em;
+        line-height: 1.35;
+      }
+      @media (min-width: 768px) { details summary { font-size: 19px; } }
+      details summary::-webkit-details-marker { display: none; }
+      details summary::after {
+        content: '+';
+        font-size: 26px;
+        font-weight: 300;
+        color: #1A2F50;
+        transition: transform 0.3s ease;
+        line-height: 1;
+        flex-shrink: 0;
+      }
+      details[open] summary::after { transform: rotate(45deg); }
+      details > div {
+        margin-top: 12px;
+        color: #6e6e73;
+        font-size: 16px;
+        line-height: 1.55;
+        max-width: 760px;
+      }
+      @media (min-width: 768px) { details > div { font-size: 17px; margin-top: 14px; } }
+
+      /* ===== Contact section avec camion bg discret ===== */
+      .contact-section {
+        position: relative;
+        background: #0a0a0a;
+        overflow: hidden;
+      }
+      .contact-bg {
+        position: absolute;
+        inset: 0;
+        background: url('./contact-camion.png') center/cover no-repeat;
+        opacity: 0.12;
+        z-index: 0;
+      }
+      .contact-bg::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(10, 10, 10, 0.65) 0%, rgba(10, 10, 10, 0.9) 100%);
+      }
+      .contact-content {
+        position: relative;
+        z-index: 1;
+      }
+
+      /* ===== FAB ===== */
+      .fab-urgent {
+        position: fixed;
+        bottom: max(18px, env(safe-area-inset-bottom));
+        right: 18px;
+        z-index: 60;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(20px);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+      }
+      @media (min-width: 768px) {
+        .fab-urgent { bottom: 24px; right: 24px; }
+      }
+      .fab-urgent.visible {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
+      }
+      .fab-urgent button {
+        background: #F37021;
+        color: #fff;
+        padding: 13px 20px;
+        border-radius: 9999px;
+        font-size: 14px;
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        box-shadow: 0 10px 30px rgba(243, 112, 33, 0.32);
+        transition: background 0.2s ease, transform 0.2s ease;
+        min-height: 44px;
+        border: none;
+        cursor: pointer;
+      }
+      @media (min-width: 768px) {
+        .fab-urgent button { padding: 14px 22px; font-size: 15px; }
+      }
+      .fab-urgent button:hover { background: #d95f15; transform: translateY(-1px); }
+      .fab-urgent .fab-pulse {
+        width: 8px; height: 8px;
+        border-radius: 9999px;
+        background: #ffffff;
+        position: relative;
+      }
+      .fab-urgent .fab-pulse::after {
+        content: '';
+        position: absolute;
+        inset: -2px;
+        border-radius: 9999px;
+        background: #ffffff;
+        opacity: 0.55;
+        animation: ping 1.6s cubic-bezier(0, 0, 0.2, 1) infinite;
+      }
+
+      /* ===== Modal ===== */
+      .urgent-modal {
+        position: fixed;
+        inset: 0;
+        z-index: 70;
+        background: rgba(10, 10, 10, 0.7);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.25s ease;
+      }
+      .urgent-modal.visible { opacity: 1; pointer-events: auto; }
+      .urgent-modal-card {
+        background: #fff;
+        border-radius: 24px;
+        padding: 32px 24px;
+        max-width: 440px;
+        width: 100%;
+        text-align: center;
+      }
+
+      .mobile-menu { display: none; }
+      .mobile-menu.open { display: flex; }
+
+      /* Subtle paper grain */
+      .grain::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image: radial-gradient(circle at 1px 1px, rgba(26, 47, 80, 0.025) 1px, transparent 0);
+        background-size: 4px 4px;
+        pointer-events: none;
+        opacity: 0.7;
+      }
+
+      /* Engagements card hairline grid */
+      .grid-hairline {
+        background: rgba(26, 47, 80, 0.1);
+        gap: 1px;
+      }
+
+      a[href^="tel:"] { -webkit-tap-highlight-color: rgba(26, 47, 80, 0.1); }
+    </style>
+  </head>
+
+  <body>
+    <!-- ============ NAV ============ -->
+    <nav class="top-nav" id="topNav">
+      <div class="max-w-7xl mx-auto flex justify-between items-center px-5 sm:px-8 py-3">
+        <a href="#" class="flex items-center" style="-webkit-tap-highlight-color: transparent;">
+          <img src="./logo.png" alt="Albert Serrurier" class="h-10 sm:h-11 w-auto" />
+        </a>
+
+        <ul class="hidden md:flex items-center gap-8 font-body">
+          <li><a href="#albert"      class="text-[13px] hover:opacity-60 transition" style="color:#6e6e73">L'artisan</a></li>
+          <li><a href="#services"    class="text-[13px] hover:opacity-60 transition" style="color:#6e6e73">Services</a></li>
+          <li><a href="#engagements" class="text-[13px] hover:opacity-60 transition" style="color:#6e6e73">Engagements</a></li>
+          <li><a href="#territoire"  class="text-[13px] hover:opacity-60 transition" style="color:#6e6e73">Territoire</a></li>
+          <li><a href="#avis"        class="text-[13px] hover:opacity-60 transition" style="color:#6e6e73">Avis</a></li>
+          <li><a href="#contact"     class="text-[13px] hover:opacity-60 transition" style="color:#6e6e73">Contact</a></li>
+        </ul>
+
+        <a href="#contact" class="btn-primary font-body rounded-full px-5 py-2 text-[13px] hidden sm:inline-flex">
+          Prendre rendez-vous
+        </a>
+
+        <button id="mobileMenuBtn" class="md:hidden p-2 -mr-2" aria-label="Menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1A2F50" stroke-width="1.5">
+            <path d="M3 6h18M3 12h18M3 18h18"/>
+          </svg>
+        </button>
+      </div>
+
+      <div id="mobileMenu" class="mobile-menu md:!hidden flex-col bg-white border-t px-5 py-5 gap-4" style="border-color: rgba(26, 47, 80, 0.08);">
+        <a href="#albert"      class="text-base py-1.5" style="color:#1A2F50">L'artisan</a>
+        <a href="#services"    class="text-base py-1.5" style="color:#1A2F50">Services</a>
+        <a href="#engagements" class="text-base py-1.5" style="color:#1A2F50">Engagements</a>
+        <a href="#territoire"  class="text-base py-1.5" style="color:#1A2F50">Territoire</a>
+        <a href="#avis"        class="text-base py-1.5" style="color:#1A2F50">Avis</a>
+        <a href="#contact"     class="text-base py-1.5" style="color:#1A2F50">Contact</a>
+        <a href="#contact" class="btn-primary rounded-full px-5 py-3 text-sm text-center mt-2">Prendre rendez-vous</a>
+      </div>
+    </nav>
+
+    <!-- ============ HERO ============ -->
+    <div class="hero-shell">
+      <div class="video-layer">
+        <video id="bgVideo"
+          src="https://res.cloudinary.com/duia2hrlv/video/upload/v1777105673/hf_20260425_081454_17dbdf21-956d-4005-acb6-4d011bbf120d_okb2cz.mp4"
+          autoplay muted loop playsinline preload="auto"></video>
+      </div>
+
+      <section class="relative z-10 flex flex-col items-center justify-center text-center px-5 sm:px-6 pb-32 sm:pb-40"
+               style="padding-top: clamp(5.5rem, 16vh, 11rem);">
+        <p class="font-body text-[11px] sm:text-[13px] tracking-[0.22em] uppercase mb-5 sm:mb-6 animate-fade-rise"
+           style="color:rgba(26, 47, 80, 0.7); font-weight:600;">
+          Dépannage · Sécurité · Confiance
+        </p>
+
+        <h1 class="font-display text-[44px] sm:text-7xl md:text-8xl max-w-7xl animate-fade-rise"
+            style="color: #1A2F50; line-height: 1; letter-spacing: -0.035em; font-weight: 600;">
+          Inviolable. <span class="font-serif italic" style="font-weight:400;">Par essence.</span>
+        </h1>
+
+        <p class="font-body text-[17px] sm:text-xl md:text-2xl max-w-2xl mt-5 sm:mt-6 animate-fade-rise-delay px-2"
+           style="color: #1A2F50; font-weight: 400; letter-spacing: -0.01em; line-height: 1.3;">
+          Et derrière, tout ce qui ne se remplace pas.
+        </p>
+
+        <a href="#contact"
+           class="btn-primary font-body rounded-full px-7 sm:px-8 py-3 sm:py-3.5 text-[16px] sm:text-[17px] mt-8 sm:mt-10 animate-fade-rise-delay-2">
+          Protéger les miens
+        </a>
+      </section>
+    </div>
+
+    <!-- ============ TRUST MARQUEE ============ -->
+    <section class="border-t py-6 sm:py-7 bg-white" style="border-color:rgba(26, 47, 80, 0.06);">
+      <div class="marquee">
+        <div class="marquee-track">
+          <span class="font-body text-[13px] sm:text-[14px]" style="color:#6e6e73;">Quinze ans d'atelier</span>
+          <span style="color:#1A2F50; opacity:0.4;">●</span>
+          <span class="font-body text-[13px] sm:text-[14px]" style="color:#6e6e73;">Devis gratuit, aucun engagement</span>
+          <span style="color:#1A2F50; opacity:0.4;">●</span>
+          <span class="font-body text-[13px] sm:text-[14px]" style="color:#6e6e73;">Prix fixe annoncé avant intervention</span>
+          <span style="color:#1A2F50; opacity:0.4;">●</span>
+          <span class="font-body text-[13px] sm:text-[14px]" style="color:#6e6e73;">Ouverture sans dégât sur la porte</span>
+          <span style="color:#1A2F50; opacity:0.4;">●</span>
+          <span class="font-body text-[13px] sm:text-[14px]" style="color:#6e6e73;">Toutes assurances acceptées</span>
+          <span style="color:#1A2F50; opacity:0.4;">●</span>
+          <span class="font-body text-[13px] sm:text-[14px]" style="color:#6e6e73;">Label Serruriers de France 2020</span>
+          <span style="color:#1A2F50; opacity:0.4;">●</span>
+          <span class="font-body text-[13px] sm:text-[14px]" style="color:#6e6e73;">Disponibilité 24h/24, 7j/7</span>
+          <span style="color:#1A2F50; opacity:0.4;">●</span>
+
+          <span class="font-body text-[13px] sm:text-[14px]" style="color:#6e6e73;">Quinze ans d'atelier</span>
+          <span style="color:#1A2F50; opacity:0.4;">●</span>
+          <span class="font-body text-[13px] sm:text-[14px]" style="color:#6e6e73;">Devis gratuit, aucun engagement</span>
+          <span style="color:#1A2F50; opacity:0.4;">●</span>
+          <span class="font-body text-[13px] sm:text-[14px]" style="color:#6e6e73;">Prix fixe annoncé avant intervention</span>
+          <span style="color:#1A2F50; opacity:0.4;">●</span>
+          <span class="font-body text-[13px] sm:text-[14px]" style="color:#6e6e73;">Ouverture sans dégât sur la porte</span>
+          <span style="color:#1A2F50; opacity:0.4;">●</span>
+          <span class="font-body text-[13px] sm:text-[14px]" style="color:#6e6e73;">Toutes assurances acceptées</span>
+          <span style="color:#1A2F50; opacity:0.4;">●</span>
+          <span class="font-body text-[13px] sm:text-[14px]" style="color:#6e6e73;">Label Serruriers de France 2020</span>
+          <span style="color:#1A2F50; opacity:0.4;">●</span>
+          <span class="font-body text-[13px] sm:text-[14px]" style="color:#6e6e73;">Disponibilité 24h/24, 7j/7</span>
+          <span style="color:#1A2F50; opacity:0.4;">●</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ URGENCE ============ -->
+    <section class="bg-dark py-16 sm:py-24 lg:py-28 px-5 sm:px-6 relative">
+      <span class="section-marker on-dark">§ 01 — urgence</span>
+      <div class="max-w-5xl mx-auto text-center reveal">
+        <p class="font-body text-[11px] sm:text-[13px] tracking-[0.22em] uppercase mb-4" style="color:#F37021; font-weight:600;">URGENCE 24/7</p>
+        <h2 class="font-display text-[34px] sm:text-5xl lg:text-6xl" style="color:#fff; font-weight:600; letter-spacing:-0.03em; line-height:1.05;">
+          Une porte ne demande <span class="font-serif italic" style="font-weight:400;">pas l'heure.</span>
+        </h2>
+        <p class="font-body text-base sm:text-lg lg:text-xl mt-4 sm:mt-5 max-w-2xl mx-auto" style="color:#a1a1a6; line-height:1.5;">
+          Intervention en moins d'une heure. 7j/7, jour et nuit.
+        </p>
+
+        <div class="grid sm:grid-cols-2 gap-3 sm:gap-4 mt-8 sm:mt-12 max-w-3xl mx-auto">
+          <a href="tel:0465848173" class="block bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-5 sm:p-7 hover:bg-white/10 transition-all text-left">
+            <p class="text-[11px] sm:text-[13px] uppercase tracking-wider" style="color:rgba(255,255,255,0.6); font-weight:600;">Savoie · Haute-Savoie</p>
+            <p class="font-display text-2xl sm:text-3xl mt-2" style="color:#fff; font-weight:600; letter-spacing:-0.01em;">04 65 84 81 73</p>
+            <p class="text-[12px] sm:text-[13px] mt-2 sm:mt-3" style="color:#a1a1a6">Serrurier Savoyard ›</p>
+          </a>
+          <a href="tel:0465847941" class="block bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-5 sm:p-7 hover:bg-white/10 transition-all text-left">
+            <p class="text-[11px] sm:text-[13px] uppercase tracking-wider" style="color:rgba(255,255,255,0.6); font-weight:600;">Le Mans &amp; alentours</p>
+            <p class="font-display text-2xl sm:text-3xl mt-2" style="color:#fff; font-weight:600; letter-spacing:-0.01em;">04 65 84 79 41</p>
+            <p class="text-[12px] sm:text-[13px] mt-2 sm:mt-3" style="color:#a1a1a6">Lémans Serrurier ›</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ALBERT (l'unique image-portrait) ============ -->
+    <section id="albert" class="relative grain px-5 sm:px-6 py-16 sm:py-24 lg:py-32 overflow-hidden" style="background:#FAF7F2;">
+      <span class="section-marker">§ 02 — l'artisan</span>
+
+      <div class="max-w-7xl mx-auto grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+        <div class="reveal lg:col-span-7 lg:order-2">
+          <p class="font-body text-[11px] sm:text-[13px] tracking-[0.22em] uppercase mb-4 sm:mb-5" style="color:#6e6e73; font-weight:600;">L'ARTISAN</p>
+
+          <h2 class="font-display text-[34px] sm:text-5xl md:text-6xl" style="color:#1A2F50; font-weight:600; letter-spacing:-0.03em; line-height:1.05;">
+            Quinze ans <span class="font-serif italic" style="font-weight:400;">face à votre porte.</span>
+          </h2>
+
+          <p class="font-body text-base sm:text-lg mt-5 sm:mt-6 max-w-xl" style="color:#1A2F50; line-height:1.55; font-weight:400;">
+            Depuis 2010, j'ouvre, je répare, j'installe. Une serrure, ce n'est pas un objet. C'est ce que vous laissez derrière vous quand vous partez le matin, et ce qui veille pendant que vous dormez.
+          </p>
+
+          <blockquote class="font-serif text-xl sm:text-2xl md:text-3xl italic mt-8 sm:mt-10 max-w-xl" style="color:#1A2F50; line-height:1.35; font-weight:400;">
+            « Une porte fragile, ce n'est pas un dossier technique. C'est une famille qui dort moins bien. Mon métier commence là. »
+          </blockquote>
+
+          <div class="mt-7 sm:mt-8 flex flex-wrap items-baseline gap-x-4 gap-y-1">
+            <span class="signature">— Albert</span>
+            <span class="font-body text-[12px] sm:text-[13px]" style="color:#6e6e73;">Atelier fondé en 2010 · Annecy</span>
+          </div>
+        </div>
+
+        <div class="reveal lg:col-span-5 lg:order-1">
+          <div class="albert-portrait"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ornament -->
+    <div class="ornament" style="background:#fff;">
+      <span class="ornament-line"></span>
+      <span class="ornament-dot"></span>
+      <span class="ornament-line"></span>
+    </div>
+
+    <!-- ============ SERVICES (sans images, typographie pure) ============ -->
+    <section id="services" class="py-16 sm:py-24 lg:py-32 px-5 sm:px-6 bg-white relative">
+      <span class="section-marker">§ 03 — services</span>
+
+      <div class="max-w-6xl mx-auto">
+        <div class="max-w-3xl reveal mb-10 sm:mb-16">
+          <p class="font-body text-[11px] sm:text-[13px] tracking-[0.22em] uppercase mb-4" style="color:#6e6e73; font-weight:600;">SERVICES</p>
+          <h2 class="font-display text-[34px] sm:text-5xl lg:text-6xl" style="color:#1A2F50; font-weight:600; letter-spacing:-0.03em; line-height:1.05;">
+            Trois métiers. <span class="font-serif italic" style="font-weight:400;">Une seule rigueur.</span>
+          </h2>
+        </div>
+
+        <!-- Service 01 -->
+        <article class="service-row reveal grid lg:grid-cols-12 gap-6 lg:gap-12 items-start">
+          <div class="lg:col-span-3">
+            <div class="service-num">01</div>
+            <p class="font-body text-[11px] sm:text-[13px] tracking-[0.22em] uppercase mt-3" style="color:#1A2F50; font-weight:600;">Ouverture</p>
+          </div>
+          <div class="lg:col-span-9">
+            <h3 class="font-display text-2xl sm:text-3xl lg:text-4xl" style="color:#1A2F50; font-weight:600; letter-spacing:-0.025em; line-height:1.15;">
+              Vous rentrez. <span class="font-serif italic" style="font-weight:400;">Sans dégât.</span>
+            </h3>
+            <p class="font-body text-base sm:text-lg mt-4 sm:mt-5 max-w-2xl" style="color:#6e6e73; line-height:1.55;">
+              Claquée, verrouillée, bloquée — chaque cas a sa technique. Nous ouvrons proprement, avec des outils de précision qui préservent la porte et le cylindre.
+            </p>
+            <ul class="mt-5 sm:mt-6 space-y-2 max-w-2xl">
+              <li class="font-body text-[15px] flex items-start gap-3" style="color:#1A2F50;">
+                <span style="color:#1A2F50; opacity:0.5;">→</span> Sur place en moins d'une heure
+              </li>
+              <li class="font-body text-[15px] flex items-start gap-3" style="color:#1A2F50;">
+                <span style="color:#1A2F50; opacity:0.5;">→</span> Aucune marque, aucune rayure
+              </li>
+              <li class="font-body text-[15px] flex items-start gap-3" style="color:#1A2F50;">
+                <span style="color:#1A2F50; opacity:0.5;">→</span> Le perçage en dernier recours uniquement
+              </li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- Service 02 -->
+        <article class="service-row reveal grid lg:grid-cols-12 gap-6 lg:gap-12 items-start">
+          <div class="lg:col-span-3">
+            <div class="service-num">02</div>
+            <p class="font-body text-[11px] sm:text-[13px] tracking-[0.22em] uppercase mt-3" style="color:#1A2F50; font-weight:600;">Réparation</p>
+          </div>
+          <div class="lg:col-span-9">
+            <h3 class="font-display text-2xl sm:text-3xl lg:text-4xl" style="color:#1A2F50; font-weight:600; letter-spacing:-0.025em; line-height:1.15;">
+              Le mécanisme <span class="font-serif italic" style="font-weight:400;">retrouve sa place.</span>
+            </h3>
+            <p class="font-body text-base sm:text-lg mt-4 sm:mt-5 max-w-2xl" style="color:#6e6e73; line-height:1.55;">
+              Cylindre forcé, ressort cassé, clé restée à l'intérieur. Diagnostic complet, démontage soigneux, remise en état au cordeau.
+            </p>
+            <ul class="mt-5 sm:mt-6 space-y-2 max-w-2xl">
+              <li class="font-body text-[15px] flex items-start gap-3" style="color:#1A2F50;">
+                <span style="color:#1A2F50; opacity:0.5;">→</span> Diagnostic transparent avant tout démontage
+              </li>
+              <li class="font-body text-[15px] flex items-start gap-3" style="color:#1A2F50;">
+                <span style="color:#1A2F50; opacity:0.5;">→</span> Pièces d'origine ou compatibles certifiées
+              </li>
+              <li class="font-body text-[15px] flex items-start gap-3" style="color:#1A2F50;">
+                <span style="color:#1A2F50; opacity:0.5;">→</span> Garantie écrite sur la réparation
+              </li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- Service 03 -->
+        <article class="service-row reveal grid lg:grid-cols-12 gap-6 lg:gap-12 items-start">
+          <div class="lg:col-span-3">
+            <div class="service-num">03</div>
+            <p class="font-body text-[11px] sm:text-[13px] tracking-[0.22em] uppercase mt-3" style="color:#1A2F50; font-weight:600;">Installation</p>
+          </div>
+          <div class="lg:col-span-9">
+            <h3 class="font-display text-2xl sm:text-3xl lg:text-4xl" style="color:#1A2F50; font-weight:600; letter-spacing:-0.025em; line-height:1.15;">
+              Pensée <span class="font-serif italic" style="font-weight:400;">pour durer.</span>
+            </h3>
+            <p class="font-body text-base sm:text-lg mt-4 sm:mt-5 max-w-2xl" style="color:#6e6e73; line-height:1.55;">
+              Standard ou haute sécurité, A2P 1, 2 ou 3 étoiles. Conseil sur mesure selon votre porte, votre quartier, votre budget — et la valeur de ce qui est derrière.
+            </p>
+            <ul class="mt-5 sm:mt-6 space-y-2 max-w-2xl">
+              <li class="font-body text-[15px] flex items-start gap-3" style="color:#1A2F50;">
+                <span style="color:#1A2F50; opacity:0.5;">→</span> Vachette · Picard · Bricard · Fichet · Mul-T-Lock
+              </li>
+              <li class="font-body text-[15px] flex items-start gap-3" style="color:#1A2F50;">
+                <span style="color:#1A2F50; opacity:0.5;">→</span> Pose précise, ajustement millimétrique
+              </li>
+              <li class="font-body text-[15px] flex items-start gap-3" style="color:#1A2F50;">
+                <span style="color:#1A2F50; opacity:0.5;">→</span> Garantie posée. Suivi à 15 jours.
+              </li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ HERO OBJECT (image-signature unique) ============ -->
+    <section class="px-0 sm:px-6 py-12 sm:py-20 bg-white">
+      <div class="max-w-7xl mx-auto reveal">
+        <div class="hero-object"></div>
+        <p class="font-serif italic text-center mt-6 sm:mt-8 px-5 sm:px-0 text-base sm:text-lg" style="color:#6e6e73; max-width:560px; margin-left:auto; margin-right:auto;">
+          « Chaque pièce a sa place. Chaque place a sa raison. »
+        </p>
+      </div>
+    </section>
+
+    <!-- ============ BIG "15" ============ -->
+    <section class="big-stat-shell relative grain px-5 sm:px-6 py-24 sm:py-32 lg:py-40 overflow-hidden" style="background:#FAF7F2;">
+      <span class="big-15">15</span>
+
+      <div class="max-w-5xl mx-auto relative z-10 text-center reveal">
+        <p class="font-body text-[11px] sm:text-[13px] tracking-[0.22em] uppercase mb-5 sm:mb-6" style="color:#6e6e73; font-weight:600;">CHIFFRE-CLÉ</p>
+        <h2 class="font-display text-[40px] sm:text-7xl md:text-8xl" style="color:#1A2F50; font-weight:600; letter-spacing:-0.035em; line-height:0.95;">
+          <span class="font-serif italic" style="font-weight:400;">Quinze ans</span>
+          <br/>à votre porte.
+        </h2>
+        <p class="font-body text-base sm:text-lg lg:text-xl mt-6 sm:mt-8 max-w-2xl mx-auto" style="color:#1A2F50; line-height:1.5;">
+          De 2010 à aujourd'hui, sans interruption, sans changement de cap. Le métier appris des anciens, transmis aux suivants, exercé chaque jour.
+        </p>
+
+        <div class="grid grid-cols-3 gap-4 sm:gap-12 mt-12 sm:mt-16 max-w-3xl mx-auto reveal-stagger">
+          <div>
+            <p class="font-display text-[28px] sm:text-4xl lg:text-5xl" style="color:#1A2F50; font-weight:600; letter-spacing:-0.025em;">4 200<span class="font-serif italic" style="font-size:0.5em; vertical-align:super; opacity:0.7; margin-left:2px;">+</span></p>
+            <p class="font-body text-[11px] sm:text-[13px] mt-2 tracking-wide uppercase" style="color:#6e6e73;">Interventions</p>
+          </div>
+          <div>
+            <p class="font-display text-[28px] sm:text-4xl lg:text-5xl" style="color:#1A2F50; font-weight:600; letter-spacing:-0.025em;">2</p>
+            <p class="font-body text-[11px] sm:text-[13px] mt-2 tracking-wide uppercase" style="color:#6e6e73;">Territoires</p>
+          </div>
+          <div>
+            <p class="font-display text-[28px] sm:text-4xl lg:text-5xl" style="color:#1A2F50; font-weight:600; letter-spacing:-0.025em;">1</p>
+            <p class="font-body text-[11px] sm:text-[13px] mt-2 tracking-wide uppercase" style="color:#6e6e73;">Promesse tenue</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ENGAGEMENTS ============ -->
+    <section id="engagements" class="py-16 sm:py-24 lg:py-32 px-5 sm:px-6 bg-white relative">
+      <span class="section-marker">§ 04 — engagements</span>
+
+      <div class="max-w-7xl mx-auto">
+        <div class="max-w-3xl reveal mb-10 sm:mb-16">
+          <p class="font-body text-[11px] sm:text-[13px] tracking-[0.22em] uppercase mb-4" style="color:#6e6e73; font-weight:600;">ENGAGEMENTS</p>
+          <h2 class="font-display text-[34px] sm:text-5xl lg:text-6xl" style="color:#1A2F50; font-weight:600; letter-spacing:-0.03em; line-height:1.05;">
+            Sept promesses. <span class="font-serif italic" style="font-weight:400;">Aucune surprise.</span>
+          </h2>
+          <p class="font-body text-base sm:text-lg lg:text-xl mt-4 sm:mt-5" style="color:#6e6e73; line-height:1.5;">
+            Ce qui est dit avant l'intervention. Ce qui est tenu après.
+          </p>
+        </div>
+
+        <div class="reveal-stagger grid sm:grid-cols-2 lg:grid-cols-3 grid-hairline rounded-2xl overflow-hidden" style="border: 1px solid rgba(26, 47, 80, 0.08);">
+          <div class="bg-white p-6 sm:p-8 lg:p-10">
+            <span class="font-display text-4xl sm:text-5xl" style="color:#1A2F50; font-weight:600; letter-spacing:-0.03em;">01</span>
+            <h3 class="font-display text-lg sm:text-xl mt-5 sm:mt-6" style="color:#1A2F50; font-weight:600; letter-spacing:-0.015em;">Devis gratuit</h3>
+            <p class="font-body text-[14px] sm:text-[15px] mt-2" style="color:#6e6e73; line-height:1.5;">
+              Annoncé au téléphone. Sans déplacement, sans engagement.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 sm:p-8 lg:p-10">
+            <span class="font-display text-4xl sm:text-5xl" style="color:#1A2F50; font-weight:600; letter-spacing:-0.03em;">02</span>
+            <h3 class="font-display text-lg sm:text-xl mt-5 sm:mt-6" style="color:#1A2F50; font-weight:600; letter-spacing:-0.015em;">Prix fixe annoncé</h3>
+            <p class="font-body text-[14px] sm:text-[15px] mt-2" style="color:#6e6e73; line-height:1.5;">
+              Ce qui est dit avant est ce qui est facturé après. Au centime près.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 sm:p-8 lg:p-10">
+            <span class="font-display text-4xl sm:text-5xl" style="color:#1A2F50; font-weight:600; letter-spacing:-0.03em;">03</span>
+            <h3 class="font-display text-lg sm:text-xl mt-5 sm:mt-6" style="color:#1A2F50; font-weight:600; letter-spacing:-0.015em;">Sans dégât</h3>
+            <p class="font-body text-[14px] sm:text-[15px] mt-2" style="color:#6e6e73; line-height:1.5;">
+              Votre porte. Comme avant. Le perçage en dernier recours uniquement.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 sm:p-8 lg:p-10">
+            <span class="font-display text-4xl sm:text-5xl" style="color:#1A2F50; font-weight:600; letter-spacing:-0.03em;">04</span>
+            <h3 class="font-display text-lg sm:text-xl mt-5 sm:mt-6" style="color:#1A2F50; font-weight:600; letter-spacing:-0.015em;">24 / 7</h3>
+            <p class="font-body text-[14px] sm:text-[15px] mt-2" style="color:#6e6e73; line-height:1.5;">
+              Jour, nuit, week-ends, jours fériés. Une porte ne demande pas l'heure.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 sm:p-8 lg:p-10">
+            <span class="font-display text-4xl sm:text-5xl" style="color:#1A2F50; font-weight:600; letter-spacing:-0.03em;">05</span>
+            <h3 class="font-display text-lg sm:text-xl mt-5 sm:mt-6" style="color:#1A2F50; font-weight:600; letter-spacing:-0.015em;">Toutes assurances</h3>
+            <p class="font-body text-[14px] sm:text-[15px] mt-2" style="color:#6e6e73; line-height:1.5;">
+              Agréés par toutes les compagnies. Démarche prise en charge.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 sm:p-8 lg:p-10">
+            <span class="font-display text-4xl sm:text-5xl" style="color:#1A2F50; font-weight:600; letter-spacing:-0.03em;">06</span>
+            <h3 class="font-display text-lg sm:text-xl mt-5 sm:mt-6" style="color:#1A2F50; font-weight:600; letter-spacing:-0.015em;">Label 2020</h3>
+            <p class="font-body text-[14px] sm:text-[15px] mt-2" style="color:#6e6e73; line-height:1.5;">
+              Serruriers de France. La référence du métier en France.
+            </p>
+          </div>
+
+          <!-- Card 07 sobre, pas d'image, juste typographie -->
+          <div class="p-6 sm:p-8 lg:p-10 sm:col-span-2 lg:col-span-3" style="background:#1A2F50;">
+            <div class="flex items-start gap-5 sm:gap-8">
+              <span class="font-display text-4xl sm:text-5xl flex-shrink-0" style="color:#fff; font-weight:600; letter-spacing:-0.03em;">07</span>
+              <div>
+                <h3 class="font-display text-lg sm:text-xl lg:text-2xl max-w-2xl" style="color:#fff; font-weight:600; letter-spacing:-0.015em; line-height:1.3;">
+                  Charte d'engagement signée à chaque intervention.
+                </h3>
+                <p class="font-body text-[14px] sm:text-[15px] mt-2 sm:mt-3 max-w-2xl" style="color:#a1a1a6; line-height:1.5;">
+                  Une feuille A4, un papier carbone. Votre exemplaire reste avec vous, le nôtre aussi. La promesse devient écrite.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PROCESS ============ -->
+    <section id="process" class="py-16 sm:py-24 lg:py-32 px-5 sm:px-6 relative" style="background:#f5f5f7;">
+      <span class="section-marker">§ 05 — process</span>
+
+      <div class="max-w-5xl mx-auto">
+        <div class="reveal mb-10 sm:mb-16">
+          <p class="font-body text-[11px] sm:text-[13px] tracking-[0.22em] uppercase mb-4" style="color:#6e6e73; font-weight:600;">PROCESS</p>
+          <h2 class="font-display text-[34px] sm:text-5xl lg:text-6xl max-w-2xl" style="color:#1A2F50; font-weight:600; letter-spacing:-0.03em; line-height:1.05;">
+            Une intervention. <span class="font-serif italic" style="font-weight:400;">En quatre temps.</span>
+          </h2>
+        </div>
+
+        <div class="relative reveal-stagger">
+          <div class="absolute left-[18px] sm:left-7 top-3 bottom-3 w-px" style="background:rgba(26, 47, 80, 0.15);"></div>
+
+          <div class="relative pl-12 sm:pl-24 pb-10 sm:pb-12">
+            <span class="absolute left-0 top-0 flex items-center justify-center w-9 h-9 sm:w-14 sm:h-14 rounded-full font-display text-xs sm:text-lg" style="background:#1A2F50; color:#fff; font-weight:600;">01</span>
+            <h3 class="font-display text-xl sm:text-2xl lg:text-3xl" style="color:#1A2F50; font-weight:600; letter-spacing:-0.02em;">Vous appelez</h3>
+            <p class="font-body text-[15px] sm:text-base lg:text-lg mt-2 max-w-xl" style="color:#6e6e73; line-height:1.55;">
+              Décrochez. Décrivez la situation. Nous évaluons immédiatement et annonçons un délai d'arrivée précis.
+            </p>
+          </div>
+
+          <div class="relative pl-12 sm:pl-24 pb-10 sm:pb-12">
+            <span class="absolute left-0 top-0 flex items-center justify-center w-9 h-9 sm:w-14 sm:h-14 rounded-full font-display text-xs sm:text-lg" style="background:#1A2F50; color:#fff; font-weight:600;">02</span>
+            <h3 class="font-display text-xl sm:text-2xl lg:text-3xl" style="color:#1A2F50; font-weight:600; letter-spacing:-0.02em;">Devis annoncé</h3>
+            <p class="font-body text-[15px] sm:text-base lg:text-lg mt-2 max-w-xl" style="color:#6e6e73; line-height:1.55;">
+              Prix fixe communiqué avant le moindre geste. Vous validez au téléphone. Ou non — sans frais, sans pression.
+            </p>
+          </div>
+
+          <div class="relative pl-12 sm:pl-24 pb-10 sm:pb-12">
+            <span class="absolute left-0 top-0 flex items-center justify-center w-9 h-9 sm:w-14 sm:h-14 rounded-full font-display text-xs sm:text-lg" style="background:#1A2F50; color:#fff; font-weight:600;">03</span>
+            <h3 class="font-display text-xl sm:text-2xl lg:text-3xl" style="color:#1A2F50; font-weight:600; letter-spacing:-0.02em;">Nous intervenons</h3>
+            <p class="font-body text-[15px] sm:text-base lg:text-lg mt-2 max-w-xl" style="color:#6e6e73; line-height:1.55;">
+              En moins d'une heure sur place. Sans dégât, sans surprise. Charte d'engagement signée avant le premier outil sorti.
+            </p>
+          </div>
+
+          <div class="relative pl-12 sm:pl-24">
+            <span class="absolute left-0 top-0 flex items-center justify-center w-9 h-9 sm:w-14 sm:h-14 rounded-full font-display text-xs sm:text-lg" style="background:#0a0a0a; color:#fff; font-weight:600;">04</span>
+            <h3 class="font-display text-xl sm:text-2xl lg:text-3xl" style="color:#1A2F50; font-weight:600; letter-spacing:-0.02em;">Vous rentrez</h3>
+            <p class="font-body text-[15px] sm:text-base lg:text-lg mt-2 max-w-xl" style="color:#6e6e73; line-height:1.55;">
+              Garantie posée, facture détaillée, assurance prise en charge si besoin. Suivi à 15 jours pour vérifier que tout va bien.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ TERRITOIRE ============ -->
+    <section id="territoire" class="py-16 sm:py-24 lg:py-32 px-5 sm:px-6 relative bg-white">
+      <span class="section-marker">§ 06 — territoire</span>
+
+      <div class="max-w-7xl mx-auto grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+        <div class="lg:col-span-5 reveal lg:order-1">
+          <p class="font-body text-[11px] sm:text-[13px] tracking-[0.22em] uppercase mb-4" style="color:#6e6e73; font-weight:600;">NOTRE TERRITOIRE</p>
+          <h2 class="font-display text-[34px] sm:text-5xl lg:text-6xl" style="color:#1A2F50; font-weight:600; letter-spacing:-0.03em; line-height:1.05;">
+            Deux régions. <span class="font-serif italic" style="font-weight:400;">Un même atelier.</span>
+          </h2>
+          <p class="font-body text-base sm:text-lg mt-5 sm:mt-6 max-w-md" style="color:#6e6e73; line-height:1.55;">
+            Albert Serrurier opère sous deux marques territoriales, avec la même rigueur, la même charte, la même équipe formée en interne.
+          </p>
+
+          <div class="mt-6 sm:mt-8 space-y-3 sm:space-y-4 max-w-md">
+            <a href="tel:0465848173" class="flex items-start gap-4 p-4 sm:p-5 border rounded-2xl hover:border-[rgba(26,47,80,0.3)] transition" style="border-color:rgba(26, 47, 80, 0.12);">
+              <span class="flex-shrink-0 w-2.5 h-2.5 rounded-full mt-1.5" style="background:#1A2F50;"></span>
+              <div class="flex-1 min-w-0">
+                <p class="font-body text-[11px] sm:text-[12px] tracking-wider uppercase" style="color:#6e6e73; font-weight:500;">Marque · Est</p>
+                <p class="font-display text-lg sm:text-xl mt-0.5" style="color:#1A2F50; font-weight:600;">Serrurier Savoyard</p>
+                <p class="font-body text-[13px] sm:text-sm mt-0.5" style="color:#6e6e73;">Savoie · Haute-Savoie</p>
+                <p class="font-display text-base sm:text-lg mt-2" style="color:#1A2F50; font-weight:600;">04 65 84 81 73</p>
+              </div>
+            </a>
+
+            <a href="tel:0465847941" class="flex items-start gap-4 p-4 sm:p-5 border rounded-2xl hover:border-[rgba(26,47,80,0.3)] transition" style="border-color:rgba(26, 47, 80, 0.12);">
+              <span class="flex-shrink-0 w-2.5 h-2.5 rounded-full mt-1.5" style="background:#1A2F50;"></span>
+              <div class="flex-1 min-w-0">
+                <p class="font-body text-[11px] sm:text-[12px] tracking-wider uppercase" style="color:#6e6e73; font-weight:500;">Marque · Ouest</p>
+                <p class="font-display text-lg sm:text-xl mt-0.5" style="color:#1A2F50; font-weight:600;">Lémans Serrurier</p>
+                <p class="font-body text-[13px] sm:text-sm mt-0.5" style="color:#6e6e73;">Le Mans &amp; alentours</p>
+                <p class="font-display text-base sm:text-lg mt-2" style="color:#1A2F50; font-weight:600;">04 65 84 79 41</p>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="lg:col-span-7 reveal flex justify-center lg:order-2 -mx-2 sm:mx-0">
+          <svg class="france-map" viewBox="0 0 500 480" xmlns="http://www.w3.org/2000/svg" style="max-width: 560px;">
+            <path class="map-zone"
+              d="M 120 80 L 160 60 L 220 65 L 280 55 L 340 70 L 380 95 L 420 130
+                 L 440 175 L 445 230 L 430 285 L 420 320 L 410 360 L 380 395
+                 L 350 420 L 310 440 L 260 445 L 220 440 L 175 425
+                 L 130 395 L 100 355 L 80 305 L 75 250 L 80 200 L 95 145 L 110 105 Z"
+            />
+            <path d="M 250 75 L 250 440" stroke="rgba(26, 47, 80, 0.08)" stroke-width="0.5" fill="none" stroke-dasharray="2 4"/>
+            <path d="M 100 250 L 440 250" stroke="rgba(26, 47, 80, 0.08)" stroke-width="0.5" fill="none" stroke-dasharray="2 4"/>
+
+            <g transform="translate(165, 175)">
+              <circle class="map-marker-pulse" cx="0" cy="0" r="8"/>
+              <circle class="map-marker-circle" cx="0" cy="0" r="9"/>
+              <circle cx="0" cy="0" r="2.5" fill="#fff"/>
+              <text x="0" y="-22" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="14" font-weight="600" fill="#1A2F50">Le Mans</text>
+              <text x="0" y="32" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="11" fill="#6e6e73" letter-spacing="0.5">04 65 84 79 41</text>
+            </g>
+
+            <g transform="translate(355, 240)">
+              <circle class="map-marker-pulse" cx="0" cy="0" r="8"/>
+              <circle class="map-marker-circle" cx="0" cy="0" r="9"/>
+              <circle cx="0" cy="0" r="2.5" fill="#fff"/>
+              <text x="0" y="-22" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="14" font-weight="600" fill="#1A2F50">Savoie · H.-Savoie</text>
+              <text x="0" y="32" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="11" fill="#6e6e73" letter-spacing="0.5">04 65 84 81 73</text>
+            </g>
+
+            <g transform="translate(60, 410)" opacity="0.3">
+              <circle cx="0" cy="0" r="14" fill="none" stroke="#1A2F50" stroke-width="0.5"/>
+              <line x1="0" y1="-12" x2="0" y2="12" stroke="#1A2F50" stroke-width="0.5"/>
+              <line x1="-12" y1="0" x2="12" y2="0" stroke="#1A2F50" stroke-width="0.5"/>
+              <text x="0" y="-16" text-anchor="middle" font-family="serif" font-size="9" fill="#1A2F50" font-style="italic">N</text>
+            </g>
+
+            <text x="250" y="465" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="12" fill="#1A2F50" opacity="0.3" letter-spacing="2">— FRANCE —</text>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ AVIS ============ -->
+    <section id="avis" class="py-16 sm:py-24 lg:py-32 px-5 sm:px-6 relative" style="background:#FAF7F2;">
+      <span class="section-marker">§ 07 — avis</span>
+
+      <div class="max-w-7xl mx-auto">
+        <div class="reveal flex flex-col sm:flex-row sm:items-end justify-between gap-5 mb-10 sm:mb-16">
+          <div>
+            <p class="font-body text-[11px] sm:text-[13px] tracking-[0.22em] uppercase mb-4" style="color:#6e6e73; font-weight:600;">AVIS VÉRIFIÉS</p>
+            <h2 class="font-display text-[34px] sm:text-5xl lg:text-6xl max-w-3xl" style="color:#1A2F50; font-weight:600; letter-spacing:-0.03em; line-height:1.05;">
+              Ils nous ont <span class="font-serif italic" style="font-weight:400;">fait confiance.</span>
+            </h2>
+          </div>
+          <div>
+            <div class="flex items-center gap-1">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="#1A2F50"><path d="M8 0l2.5 5.5L16 6l-4 4 1 6-5-3-5 3 1-6L0 6l5.5-.5z"/></svg>
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="#1A2F50"><path d="M8 0l2.5 5.5L16 6l-4 4 1 6-5-3-5 3 1-6L0 6l5.5-.5z"/></svg>
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="#1A2F50"><path d="M8 0l2.5 5.5L16 6l-4 4 1 6-5-3-5 3 1-6L0 6l5.5-.5z"/></svg>
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="#1A2F50"><path d="M8 0l2.5 5.5L16 6l-4 4 1 6-5-3-5 3 1-6L0 6l5.5-.5z"/></svg>
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="#1A2F50"><path d="M8 0l2.5 5.5L16 6l-4 4 1 6-5-3-5 3 1-6L0 6l5.5-.5z"/></svg>
+            </div>
+            <p class="font-body text-[13px] mt-1.5" style="color:#6e6e73;"><span style="color:#1A2F50; font-weight:600;">4,9 / 5</span> sur 187 avis Google</p>
+          </div>
+        </div>
+
+        <div class="grid lg:grid-cols-3 gap-4 sm:gap-6">
+          <article class="reveal lg:col-span-2 lg:row-span-2 bg-white rounded-3xl p-7 sm:p-10 lg:p-12 flex flex-col justify-between min-h-[300px] lg:min-h-[400px]">
+            <div>
+              <div class="flex items-center gap-1 mb-5 sm:mb-6">
+                <svg width="17" height="17" viewBox="0 0 16 16" fill="#1A2F50"><path d="M8 0l2.5 5.5L16 6l-4 4 1 6-5-3-5 3 1-6L0 6l5.5-.5z"/></svg>
+                <svg width="17" height="17" viewBox="0 0 16 16" fill="#1A2F50"><path d="M8 0l2.5 5.5L16 6l-4 4 1 6-5-3-5 3 1-6L0 6l5.5-.5z"/></svg>
+                <svg width="17" height="17" viewBox="0 0 16 16" fill="#1A2F50"><path d="M8 0l2.5 5.5L16 6l-4 4 1 6-5-3-5 3 1-6L0 6l5.5-.5z"/></svg>
+                <svg width="17" height="17" viewBox="0 0 16 16" fill="#1A2F50"><path d="M8 0l2.5 5.5L16 6l-4 4 1 6-5-3-5 3 1-6L0 6l5.5-.5z"/></svg>
+                <svg width="17" height="17" viewBox="0 0 16 16" fill="#1A2F50"><path d="M8 0l2.5 5.5L16 6l-4 4 1 6-5-3-5 3 1-6L0 6l5.5-.5z"/></svg>
+              </div>
+              <blockquote class="font-serif text-xl sm:text-2xl lg:text-3xl italic" style="color:#1A2F50; line-height:1.35; font-weight:400;">
+                « Porte claquée à 23h, un samedi. Sur place en quarante minutes, ouverte sans une rayure. Le prix annoncé au téléphone, c'est exactement ce que j'ai payé. Du métier, de la franchise, de la rapidité — j'ai trouvé mon serrurier pour les quinze prochaines années. »
+              </blockquote>
+            </div>
+            <div class="mt-7 sm:mt-10 pt-5 sm:pt-6 border-t" style="border-color:rgba(26, 47, 80, 0.08);">
+              <p class="font-body text-sm" style="color:#1A2F50; font-weight:600;">Claire B.</p>
+              <p class="font-body text-[12px] sm:text-[13px]" style="color:#6e6e73;">Annecy · Particulier · il y a 3 semaines</p>
+            </div>
+          </article>
+
+          <article class="reveal bg-white rounded-3xl p-6 sm:p-7">
+            <div class="flex items-center gap-0.5 mb-3 sm:mb-4">
+              <svg width="13" height="13" viewBox="0 0 16 16" fill="#1A2F50"><path d="M8 0l2.5 5.5L16 6l-4 4 1 6-5-3-5 3 1-6L0 6l5.5-.5z"/></svg>
+              <svg width="13" height="13" viewBox="0 0 16 16" fill="#1A2F50"><path d="M8 0l2.5 5.5L16 6l-4 4 1 6-5-3-5 3 1-6L0 6l5.5-.5z"/></svg>
+              <svg width="13" height="13" viewBox="0 0 16 16" fill="#1A2F50"><path d="M8 0l2.5 5.5L16 6l-4 4 1 6-5-3-5 3 1-6L0 6l5.5-.5z"/></svg>
+              <svg width="13" height="13" viewBox="0 0 16 16" fill="#1A2F50"><path d="M8 0l2.5 5.5L16 6l-4 4 1 6-5-3-5 3 1-6L0 6l5.5-.5z"/></svg>
+              <svg width="13" height="13" viewBox="0 0 16 16" fill="#1A2F50"><path d="M8 0l2.5 5.5L16 6l-4 4 1 6-5-3-5 3 1-6L0 6l5.5-.5z"/></svg>
+            </div>
+            <p class="font-body text-[14px] sm:text-[15px]" style="color:#1A2F50; line-height:1.5;">
+              « Installation d'une serrure haute sécurité après un cambriolage. Conseil clair, pose nette, suivi après deux semaines. »
+            </p>
+            <p class="font-body text-[12px] sm:text-[13px] mt-4 sm:mt-5" style="color:#6e6e73;">
+              <span style="color:#1A2F50; font-weight:600;">Marc D.</span> · Le Mans
+            </p>
+          </article>
+
+          <article class="reveal bg-white rounded-3xl p-6 sm:p-7">
+            <div class="flex items-center gap-0.5 mb-3 sm:mb-4">
+              <svg width="13" height="13" viewBox="0 0 16 16" fill="#1A2F50"><path d="M8 0l2.5 5.5L16 6l-4 4 1 6-5-3-5 3 1-6L0 6l5.5-.5z"/></svg>
+              <svg width="13" height="13" viewBox="0 0 16 16" fill="#1A2F50"><path d="M8 0l2.5 5.5L16 6l-4 4 1 6-5-3-5 3 1-6L0 6l5.5-.5z"/></svg>
+              <svg width="13" height="13" viewBox="0 0 16 16" fill="#1A2F50"><path d="M8 0l2.5 5.5L16 6l-4 4 1 6-5-3-5 3 1-6L0 6l5.5-.5z"/></svg>
+              <svg width="13" height="13" viewBox="0 0 16 16" fill="#1A2F50"><path d="M8 0l2.5 5.5L16 6l-4 4 1 6-5-3-5 3 1-6L0 6l5.5-.5z"/></svg>
+              <svg width="13" height="13" viewBox="0 0 16 16" fill="#1A2F50"><path d="M8 0l2.5 5.5L16 6l-4 4 1 6-5-3-5 3 1-6L0 6l5.5-.5z"/></svg>
+            </div>
+            <p class="font-body text-[14px] sm:text-[15px]" style="color:#1A2F50; line-height:1.5;">
+              « Cinq commerces équipés, zéro défaillance en deux ans. Réactifs sur les pannes, intransigeants sur la qualité. »
+            </p>
+            <p class="font-body text-[12px] sm:text-[13px] mt-4 sm:mt-5" style="color:#6e6e73;">
+              <span style="color:#1A2F50; font-weight:600;">Sébastien R.</span> · Chambéry · Pro
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section class="py-16 sm:py-24 lg:py-32 px-5 sm:px-6 bg-white relative">
+      <span class="section-marker">§ 08 — questions</span>
+
+      <div class="max-w-4xl mx-auto">
+        <div class="reveal mb-8 sm:mb-12">
+          <p class="font-body text-[11px] sm:text-[13px] tracking-[0.22em] uppercase mb-4" style="color:#6e6e73; font-weight:600;">QUESTIONS FRÉQUENTES</p>
+          <h2 class="font-display text-[34px] sm:text-5xl lg:text-6xl" style="color:#1A2F50; font-weight:600; letter-spacing:-0.03em; line-height:1.05;">
+            Tout ce que <span class="font-serif italic" style="font-weight:400;">vous voudrez savoir.</span>
+          </h2>
+        </div>
+
+        <div class="reveal">
+          <details>
+            <summary>En combien de temps intervenez-vous ?</summary>
+            <div>En moyenne moins d'une heure sur la zone d'intervention. En cas d'urgence pure (porte claquée, enfant à l'intérieur, médication oubliée), nous priorisons l'intervention.</div>
+          </details>
+          <details>
+            <summary>Quel est le tarif d'une intervention ?</summary>
+            <div>Le prix dépend du type de serrure et de la nature de l'intervention. Il est annoncé au téléphone, fixe, sans frais cachés. Vous validez avant tout déplacement.</div>
+          </details>
+          <details>
+            <summary>Travaillez-vous avec ma compagnie d'assurance ?</summary>
+            <div>Oui, nous sommes agréés par toutes les compagnies d'assurance. Nous prenons en charge les démarches et la facturation directe quand votre contrat le permet.</div>
+          </details>
+          <details>
+            <summary>Pouvez-vous ouvrir sans casser la serrure ?</summary>
+            <div>Dans 95% des cas, oui. Nous utilisons des techniques d'ouverture fine qui préservent la porte et la serrure. Le perçage est un dernier recours, jamais un point de départ.</div>
+          </details>
+          <details>
+            <summary>Quels types de serrures installez-vous ?</summary>
+            <div>Tous : standard, haute sécurité, A2P 1/2/3 étoiles, multipoints, connectées. Nous travaillons avec les marques de référence (Vachette, Picard, Bricard, Fichet, Mul-T-Lock).</div>
+          </details>
+          <details>
+            <summary>Intervenez-vous la nuit, les week-ends et jours fériés ?</summary>
+            <div>Oui, 24h/24 et 7j/7. Aucun supplément abusif : le tarif reste cohérent, simplement majoré selon la grille publique des interventions de nuit.</div>
+          </details>
+          <details>
+            <summary>Êtes-vous certifiés ?</summary>
+            <div>Albert Serrurier est titulaire du label Serruriers de France 2020, signe d'une charte qualité stricte. 15 ans d'exercice continu, équipe formée en interne.</div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section id="contact" class="contact-section py-16 sm:py-24 lg:py-32 px-5 sm:px-6">
+      <div class="contact-bg"></div>
+      <span class="section-marker on-dark">§ 09 — contact</span>
+
+      <div class="contact-content max-w-7xl mx-auto">
+        <div class="text-center max-w-3xl mx-auto reveal">
+          <p class="font-body text-[11px] sm:text-[13px] tracking-[0.22em] uppercase mb-4" style="color:#F37021; font-weight:600;">CONTACT</p>
+          <h2 class="font-display text-[34px] sm:text-5xl lg:text-6xl" style="color:#fff; font-weight:600; letter-spacing:-0.03em; line-height:1.05;">
+            Deux territoires. <span class="font-serif italic" style="font-weight:400;">Un même savoir-faire.</span>
+          </h2>
+          <p class="font-body text-base sm:text-lg lg:text-xl mt-4 sm:mt-5 max-w-xl mx-auto" style="color:#a1a1a6; line-height:1.5;">
+            Choisissez votre zone. Décrochez. Nous nous occupons du reste.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-4 sm:gap-6 mt-10 sm:mt-16 max-w-4xl mx-auto">
+          <div class="reveal bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-7 sm:p-10">
+            <p class="font-body text-[11px] sm:text-[13px] tracking-[0.22em] uppercase" style="color:rgba(255,255,255,0.6); font-weight:600;">Marque</p>
+            <h3 class="font-display text-2xl sm:text-3xl lg:text-4xl mt-2" style="color:#fff; font-weight:600; letter-spacing:-0.02em;">Serrurier Savoyard</h3>
+            <p class="font-body text-sm sm:text-base mt-2 sm:mt-3" style="color:#a1a1a6;">Savoie · Haute-Savoie</p>
+
+            <div class="mt-6 sm:mt-8 pt-6 sm:pt-8 border-t border-white/10">
+              <p class="font-body text-[11px] sm:text-[13px] tracking-[0.22em] uppercase" style="color:#a1a1a6;">Numéro 24/7</p>
+              <p class="font-display text-2xl sm:text-3xl lg:text-4xl mt-2" style="color:#fff; font-weight:600; letter-spacing:-0.01em;">04 65 84 81 73</p>
+            </div>
+
+            <a href="tel:0465848173" class="btn-light font-body rounded-full px-6 py-3 text-[15px] mt-6 sm:mt-8 inline-flex">
+              Appeler maintenant
+            </a>
+          </div>
+
+          <div class="reveal bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-7 sm:p-10">
+            <p class="font-body text-[11px] sm:text-[13px] tracking-[0.22em] uppercase" style="color:rgba(255,255,255,0.6); font-weight:600;">Marque</p>
+            <h3 class="font-display text-2xl sm:text-3xl lg:text-4xl mt-2" style="color:#fff; font-weight:600; letter-spacing:-0.02em;">Lémans Serrurier</h3>
+            <p class="font-body text-sm sm:text-base mt-2 sm:mt-3" style="color:#a1a1a6;">Le Mans &amp; alentours</p>
+
+            <div class="mt-6 sm:mt-8 pt-6 sm:pt-8 border-t border-white/10">
+              <p class="font-body text-[11px] sm:text-[13px] tracking-[0.22em] uppercase" style="color:#a1a1a6;">Numéro 24/7</p>
+              <p class="font-display text-2xl sm:text-3xl lg:text-4xl mt-2" style="color:#fff; font-weight:600; letter-spacing:-0.01em;">04 65 84 79 41</p>
+            </div>
+
+            <a href="tel:0465847941" class="btn-light font-body rounded-full px-6 py-3 text-[15px] mt-6 sm:mt-8 inline-flex">
+              Appeler maintenant
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="bg-dark px-5 sm:px-6 py-10 sm:py-14 border-t border-white/5">
+      <div class="max-w-7xl mx-auto">
+        <div class="flex flex-col md:flex-row justify-between gap-8 sm:gap-10 items-start">
+          <div>
+            <img src="./logo.png" alt="Albert Serrurier" class="h-14 sm:h-16 w-auto" />
+            <p class="font-body text-[11px] sm:text-[13px] mt-3 sm:mt-4 tracking-[0.18em] uppercase" style="color:#a1a1a6; font-weight:600;">Dépannage · Sécurité · Confiance</p>
+            <p class="font-serif italic text-sm mt-2 sm:mt-3" style="color:#6e6e73;">— Atelier fondé en 2010</p>
+          </div>
+
+          <div class="flex flex-col sm:flex-row gap-5 sm:gap-12">
+            <div>
+              <p class="font-body text-[11px] sm:text-[13px] tracking-[0.22em] uppercase" style="color:#a1a1a6">Savoyard</p>
+              <a href="tel:0465848173" class="font-display text-base sm:text-lg mt-1.5 sm:mt-2 block" style="color:#fff; font-weight:600;">04 65 84 81 73</a>
+              <p class="font-body text-[12px] sm:text-[13px] mt-1" style="color:#6e6e73;">Savoie · Haute-Savoie</p>
+            </div>
+            <div>
+              <p class="font-body text-[11px] sm:text-[13px] tracking-[0.22em] uppercase" style="color:#a1a1a6">Lémans</p>
+              <a href="tel:0465847941" class="font-display text-base sm:text-lg mt-1.5 sm:mt-2 block" style="color:#fff; font-weight:600;">04 65 84 79 41</a>
+              <p class="font-body text-[12px] sm:text-[13px] mt-1" style="color:#6e6e73;">Le Mans &amp; alentours</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-10 sm:mt-12 pt-6 sm:pt-8 border-t border-white/5 flex flex-col sm:flex-row justify-between gap-3 sm:gap-4">
+          <p class="font-body text-[11px] sm:text-[12px]" style="color:#6e6e73">© 2026 Albert Serrurier. Tous droits réservés.</p>
+          <div class="flex gap-5 sm:gap-6">
+            <a href="#" class="font-body text-[11px] sm:text-[12px] hover:opacity-70" style="color:#6e6e73">Mentions légales</a>
+            <a href="#" class="font-body text-[11px] sm:text-[12px] hover:opacity-70" style="color:#6e6e73">CGV</a>
+            <a href="#" class="font-body text-[11px] sm:text-[12px] hover:opacity-70" style="color:#6e6e73">Confidentialité</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ============ FAB URGENT ============ -->
+    <div id="fabUrgent" class="fab-urgent">
+      <button id="fabBtn" type="button">
+        <span class="fab-pulse"></span>
+        Urgence 24/7
+      </button>
+    </div>
+
+    <!-- ============ MODAL URGENT ============ -->
+    <div id="urgentModal" class="urgent-modal">
+      <div class="urgent-modal-card">
+        <p class="font-body text-[11px] sm:text-[13px] tracking-[0.22em] uppercase" style="color:#6e6e73; font-weight:600;">URGENCE 24/7</p>
+        <h3 class="font-display text-2xl sm:text-3xl mt-2" style="color:#1A2F50; font-weight:600; letter-spacing:-0.02em;">
+          Choisissez votre zone.
+        </h3>
+
+        <div class="grid grid-cols-1 gap-3 mt-6 sm:mt-8">
+          <a href="tel:0465848173" class="block text-white rounded-2xl p-4 sm:p-5 hover:opacity-90 transition" style="background:#F37021;">
+            <p class="text-[11px] sm:text-[12px] uppercase tracking-wider" style="color:rgba(255,255,255,0.7); font-weight:600;">Savoie · Haute-Savoie</p>
+            <p class="font-display text-xl sm:text-2xl mt-1" style="font-weight:600;">04 65 84 81 73</p>
+          </a>
+          <a href="tel:0465847941" class="block text-white rounded-2xl p-4 sm:p-5 hover:opacity-90 transition" style="background:#F37021;">
+            <p class="text-[11px] sm:text-[12px] uppercase tracking-wider" style="color:rgba(255,255,255,0.7); font-weight:600;">Le Mans &amp; alentours</p>
+            <p class="font-display text-xl sm:text-2xl mt-1" style="font-weight:600;">04 65 84 79 41</p>
+          </a>
+        </div>
+
+        <button id="closeModal" class="font-body text-sm mt-5 sm:mt-6 py-2 px-4" style="color:#6e6e73">Fermer</button>
+      </div>
+    </div>
+
+    <script>
+      /* Video native loop */
+      (function () {
+        const video = document.getElementById('bgVideo');
+        if (!video) return;
+        video.muted = true;
+        video.playsInline = true;
+        function startPlayback() {
+          const p = video.play();
+          if (p && p.catch) p.catch(function () {});
+        }
+        video.addEventListener('loadedmetadata', startPlayback);
+        if (video.readyState >= 1) startPlayback();
+      })();
+
+      /* Sticky nav blur */
+      (function () {
+        const nav = document.getElementById('topNav');
+        function onScroll() {
+          if (window.scrollY > 30) nav.classList.add('scrolled');
+          else nav.classList.remove('scrolled');
+        }
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+      })();
+
+      /* Reveal on scroll */
+      (function () {
+        const items = document.querySelectorAll('.reveal, .reveal-stagger');
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((e) => {
+              if (e.isIntersecting) {
+                e.target.classList.add('visible');
+                io.unobserve(e.target);
+              }
+            });
+          },
+          { rootMargin: '0px 0px -60px 0px', threshold: 0.08 }
+        );
+        items.forEach((el) => io.observe(el));
+      })();
+
+      /* Mobile menu */
+      (function () {
+        const btn = document.getElementById('mobileMenuBtn');
+        const menu = document.getElementById('mobileMenu');
+        if (!btn || !menu) return;
+        btn.addEventListener('click', () => menu.classList.toggle('open'));
+        menu.querySelectorAll('a').forEach((a) =>
+          a.addEventListener('click', () => menu.classList.remove('open'))
+        );
+      })();
+
+      /* FAB urgent */
+      (function () {
+        const fab = document.getElementById('fabUrgent');
+        const fabBtn = document.getElementById('fabBtn');
+        const modal = document.getElementById('urgentModal');
+        const close = document.getElementById('closeModal');
+        if (!fab || !modal) return;
+
+        function onScroll() {
+          if (window.scrollY > window.innerHeight * 0.7) fab.classList.add('visible');
+          else fab.classList.remove('visible');
+        }
+        window.addEventListener('scroll', onScroll, { passive: true });
+
+        fabBtn.addEventListener('click', () => modal.classList.add('visible'));
+        close.addEventListener('click', () => modal.classList.remove('visible'));
+        modal.addEventListener('click', (e) => {
+          if (e.target === modal) modal.classList.remove('visible');
+        });
+      })();
+    </script>
+  </body>
+</html>
