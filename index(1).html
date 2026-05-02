@@ -1,0 +1,801 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#1A2F50" />
+    <title>Albert Serrurier — Serrurier d'urgence en Haute-Savoie · 04 65 84 81 73</title>
+    <meta
+      name="description"
+      content="Serrurier d'urgence en Haute-Savoie. Ouverture de porte, réparation et installation de serrures. Disponible 24h/24, 7j/7. Devis gratuit, prix fixe annoncé, sans dégât. Appelez le 04 65 84 81 73."
+    />
+    <link rel="icon" href="./logo.png" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..600&display=swap"
+      rel="stylesheet"
+    />
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              background: '#ffffff', cream: '#FAF7F2', surface: '#f5f5f7',
+              foreground: '#1A2F50', navy: '#1A2F50', 'navy-deep': '#142442',
+              orange: '#F37021', muted: '#6e6e73', dark: '#0a0a0a',
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      :root {
+        --color-background: #ffffff; --color-cream: #FAF7F2; --color-surface: #f5f5f7;
+        --color-navy: #1a2f50; --color-navy-deep: #142442; --color-orange: #F37021;
+        --color-muted: #6e6e73; --color-dark: #0a0a0a;
+      }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+      html, body {
+        margin: 0; padding: 0; background: #ffffff; color: #1a2f50;
+        font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+        font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1; overflow-x: hidden;
+      }
+      .font-display { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif; letter-spacing: -0.025em; }
+      .font-body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif; }
+      .font-serif { font-family: 'Fraunces', 'Hoefler Text', Georgia, serif; font-feature-settings: 'ss01' 1, 'ss02' 1; }
+
+      /* ===== Hero ===== */
+      .hero-shell { position: relative; width: 100%; min-height: 100vh; min-height: 100svh; overflow: hidden; background: #f5f0e8; }
+      .hero-bg { position: absolute; inset: 0; z-index: 0; background: url('./fond-hero.png') center/cover no-repeat; background-position: center 60%; }
+      @media (max-width: 768px) {
+        .hero-bg { background-position: center 75%; background-size: cover; }
+      }
+      .hero-overlay { position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, rgba(245, 240, 232, 0.55) 0%, rgba(245, 240, 232, 0.15) 35%, rgba(245, 240, 232, 0.1) 60%, rgba(245, 240, 232, 0.5) 100%); pointer-events: none; }
+
+      /* ===== Sticky nav ===== */
+      .top-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 50; border-bottom: 1px solid transparent; }
+      .top-nav.scrolled { background-color: rgba(255, 255, 255, 0.78); backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px); border-bottom-color: rgba(26, 47, 80, 0.08); }
+
+      /* ===== Buttons ===== */
+      .btn-primary { background: #1a2f50; color: #fff; font-weight: 600; min-height: 48px; display: inline-flex; align-items: center; justify-content: center; gap: 10px; }
+      .btn-primary:hover { background: #142442; }
+
+      .btn-orange { background: #F37021; color: #fff; font-weight: 700; min-height: 52px; display: inline-flex; align-items: center; justify-content: center; gap: 10px; box-shadow: 0 6px 20px rgba(243, 112, 33, 0.28); }
+      .btn-orange:hover { background: #d95f15; }
+
+      .btn-light { background: #ffffff; color: #1a2f50; font-weight: 600; min-height: 48px; display: inline-flex; align-items: center; justify-content: center; gap: 10px; }
+      .btn-light:hover { opacity: 0.88; }
+
+      .section-marker { position: absolute; top: 24px; left: 24px; font-family: 'Fraunces', serif; font-style: italic; font-size: 13px; color: rgba(26, 47, 80, 0.4); letter-spacing: 0.05em; }
+      .section-marker.on-dark { color: rgba(255, 255, 255, 0.35); }
+      @media (max-width: 1024px) { .section-marker { display: none; } }
+
+      .ornament { display: flex; align-items: center; justify-content: center; gap: 14px; padding: 28px 0; }
+      .ornament-line { width: 48px; height: 1px; background: rgba(26, 47, 80, 0.18); }
+      .ornament-dot { width: 5px; height: 5px; border-radius: 50%; background: #1a2f50; opacity: 0.6; } }
+
+      /* ===== Service rows ===== */
+      .service-row { position: relative; padding-top: 48px; padding-bottom: 48px; border-top: 1px solid rgba(26, 47, 80, 0.1); }
+      @media (min-width: 768px) { .service-row { padding-top: 80px; padding-bottom: 80px; } }
+      .service-row:last-child { border-bottom: 1px solid rgba(26, 47, 80, 0.1); }
+      .service-num { font-family: -apple-system, 'SF Pro Display', sans-serif; font-weight: 700; font-size: clamp(72px, 14vw, 160px); line-height: 0.85; letter-spacing: -0.05em; color: #1A2F50; opacity: 0.08; }
+      @media (min-width: 1024px) { .service-num { font-size: clamp(120px, 12vw, 200px); } }
+
+      /* ===== Services détaillés cards ===== */
+      .detail-card { position: relative; padding: 24px 22px; background: #FAF7F2; border: 1px solid rgba(26, 47, 80, 0.08); border-radius: 20px; }
+      @media (min-width: 768px) { .detail-card { padding: 32px 28px; } }
+      .detail-card:hover { border-color: rgba(26, 47, 80, 0.2); }
+      .detail-card-icon { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: #1A2F50; color: #fff; font-family: -apple-system, sans-serif; font-weight: 700; font-size: 14px; letter-spacing: -0.01em; }
+
+      /* ===== Albert portrait ===== */
+      .albert-portrait { position: relative; aspect-ratio: 4 / 5; background: #1A2F50 url('./portrait-albert.png') center/cover no-repeat; border-radius: 4px; overflow: hidden; }
+      .albert-portrait::after { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 50% 30%, transparent 50%, rgba(10, 10, 10, 0.12) 100%); pointer-events: none; }
+      .signature { font-family: 'Fraunces', cursive; font-style: italic; font-weight: 400; font-size: 24px; color: #1A2F50; }
+      @media (min-width: 768px) { .signature { font-size: 28px; } }
+
+      /* ===== Hero object ===== */
+      .hero-object { position: relative; aspect-ratio: 16 / 9; background: #f5f5f7 url('./service-03-installation.png') center/cover no-repeat; border-radius: 0; overflow: hidden; }
+      @media (min-width: 768px) { .hero-object { aspect-ratio: 21 / 9; border-radius: 24px; } }
+
+      /* ===== Big "15" ===== */
+      .big-stat-shell { position: relative; overflow: hidden; }
+      .big-15 { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-family: -apple-system, 'SF Pro Display', sans-serif; font-weight: 700; font-size: clamp(220px, 50vw, 720px); line-height: 0.78; letter-spacing: -0.06em; color: rgba(26, 47, 80, 0.055); z-index: 0; pointer-events: none; user-select: none; }
+
+      /* ===== Map ===== */
+      .france-map { width: 100%; height: auto; }
+      .map-zone { fill: rgba(26, 47, 80, 0.06); stroke: rgba(26, 47, 80, 0.18); stroke-width: 0.5; }
+      .map-marker-pulse { display: none; } 100% { r: 28; opacity: 0; } }
+
+      /* ===== FAQ ===== */
+      details { border-top: 1px solid rgba(26, 47, 80, 0.12); padding: 22px 0; }
+      @media (min-width: 768px) { details { padding: 28px 0; } }
+      details:last-of-type { border-bottom: 1px solid rgba(26, 47, 80, 0.12); }
+      details summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 17px; font-weight: 500; color: #1A2F50; letter-spacing: -0.01em; line-height: 1.35; }
+      @media (min-width: 768px) { details summary { font-size: 19px; } }
+      details summary::-webkit-details-marker { display: none; }
+      details summary::after { content: '+'; font-size: 26px; font-weight: 300; color: #1A2F50; line-height: 1; flex-shrink: 0; }
+      details[open] summary::after { transform: rotate(45deg); }
+      details > div { margin-top: 12px; color: #6e6e73; font-size: 16px; line-height: 1.55; max-width: 760px; }
+      @media (min-width: 768px) { details > div { font-size: 17px; margin-top: 14px; } }
+
+      /* ===== Contact ===== */
+      .contact-section { position: relative; background: #0a0a0a; overflow: hidden; }
+      .contact-bg { position: absolute; inset: 0; background: url('./contact-camion.png') center/cover no-repeat; opacity: 0.12; z-index: 0; }
+      .contact-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10, 10, 10, 0.65) 0%, rgba(10, 10, 10, 0.9) 100%); }
+      .contact-content { position: relative; z-index: 1; }
+
+      /* ===== FAB sticky téléphone ===== */
+      .fab-call { position: fixed; bottom: max(16px, env(safe-area-inset-bottom)); left: 16px; right: 16px; z-index: 60; opacity: 0; pointer-events: none; }
+      @media (min-width: 768px) { .fab-call { bottom: 24px; right: 24px; left: auto; } }
+      .fab-call.visible { opacity: 1; pointer-events: auto; }
+      .fab-call a { background: #F37021; color: #fff; padding: 16px 24px; border-radius: 9999px; font-size: 16px; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 10px; box-shadow: 0 12px 32px rgba(243, 112, 33, 0.4); min-height: 56px; text-decoration: none; width: 100%; letter-spacing: -0.01em; }
+      @media (min-width: 768px) { .fab-call a { padding: 14px 22px; font-size: 15px; width: auto; } }
+      .fab-call a:hover { background: #d95f15; }
+      .fab-phone-icon { width: 20px; height: 20px; flex-shrink: 0; }
+      .fab-pulse-dot { width: 8px; height: 8px; border-radius: 9999px; background: #ffffff; position: relative; flex-shrink: 0; }
+      .fab-pulse-dot::after { display: none; }
+
+      .mobile-menu { display: none; }
+      .mobile-menu.open { display: flex; }
+
+      .grain::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle at 1px 1px, rgba(26, 47, 80, 0.025) 1px, transparent 0); background-size: 4px 4px; pointer-events: none; opacity: 0.7; }
+
+      .grid-hairline { background: rgba(26, 47, 80, 0.1); gap: 1px; }
+
+      a[href^="tel:"] { -webkit-tap-highlight-color: rgba(243, 112, 33, 0.2); }
+
+      .icon-phone { width: 18px; height: 18px; flex-shrink: 0; }
+    </style>
+  </head>
+
+  <body>
+    <!-- ============ NAV ============ -->
+    <nav class="top-nav" id="topNav">
+      <div class="max-w-7xl mx-auto flex justify-between items-center px-5 sm:px-8 py-3">
+        <a href="#" class="flex items-center" style="-webkit-tap-highlight-color: transparent;">
+          <img src="./logo.png" alt="Albert Serrurier" class="h-10 sm:h-11 w-auto" />
+        </a>
+
+        <ul class="hidden md:flex items-center gap-8 font-body">
+          <li><a href="#services"        class="text-[14px] hover:opacity-60" style="color:#6e6e73">Services</a></li>
+          <li><a href="#prestations"     class="text-[14px] hover:opacity-60" style="color:#6e6e73">Prestations</a></li>
+          <li><a href="#engagements"     class="text-[14px] hover:opacity-60" style="color:#6e6e73">Engagements</a></li>
+          <li><a href="#zone"            class="text-[14px] hover:opacity-60" style="color:#6e6e73">Zone d'intervention</a></li>
+          <li><a href="#contact"         class="text-[14px] hover:opacity-60" style="color:#6e6e73">Contact</a></li>
+        </ul>
+
+        <a href="tel:0465848173" class="btn-orange font-body rounded-full px-5 py-2.5 text-[14px] hidden sm:inline-flex">
+          <svg class="icon-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          04 65 84 81 73
+        </a>
+
+        <button id="mobileMenuBtn" class="md:hidden p-2 -mr-2" aria-label="Menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1A2F50" stroke-width="1.5"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+        </button>
+      </div>
+
+      <div id="mobileMenu" class="mobile-menu md:!hidden flex-col bg-white border-t px-5 py-5 gap-4" style="border-color: rgba(26, 47, 80, 0.08);">
+        <a href="#services"        class="text-base py-1.5" style="color:#1A2F50">Services</a>
+        <a href="#prestations"     class="text-base py-1.5" style="color:#1A2F50">Prestations</a>
+        <a href="#engagements"     class="text-base py-1.5" style="color:#1A2F50">Engagements</a>
+        <a href="#zone"            class="text-base py-1.5" style="color:#1A2F50">Zone d'intervention</a>
+        <a href="#contact"         class="text-base py-1.5" style="color:#1A2F50">Contact</a>
+        <a href="tel:0465848173" class="btn-orange rounded-full px-5 py-3 text-sm text-center mt-2 inline-flex">
+          <svg class="icon-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Appeler le 04 65 84 81 73
+        </a>
+      </div>
+    </nav>
+
+    <!-- ============ HERO ============ -->
+    <div class="hero-shell">
+      <div class="hero-bg" role="img" aria-label="Serrurier au travail sur un cylindre"></div>
+      <div class="hero-overlay"></div>
+
+      <section class="relative z-10 flex flex-col items-center justify-center text-center px-5 sm:px-6 pb-24 sm:pb-32" style="padding-top: clamp(5.5rem, 16vh, 11rem);">
+        <p class="font-body text-[11px] sm:text-[13px] tracking-[0.22em] uppercase mb-5 sm:mb-6" style="color:#F37021; font-weight:700;">
+          HAUTE-SAVOIE · 24H/24 · 7J/7
+        </p>
+
+        <h1 class="font-display text-[40px] sm:text-6xl md:text-7xl max-w-5xl" style="color: #1A2F50; line-height: 1.02; letter-spacing: -0.03em; font-weight: 600;">
+          Serrurier d'urgence <br class="hidden sm:block" />en Haute-Savoie.
+        </h1>
+
+        <p class="font-body text-[17px] sm:text-xl md:text-2xl max-w-2xl mt-5 sm:mt-6 px-2" style="color: #1A2F50; font-weight: 500; letter-spacing: -0.01em; line-height: 1.4;">
+          Ouverture, réparation, installation. Intervention rapide, sans dégât, prix annoncé à l'avance.
+        </p>
+
+        <a href="tel:0465848173" class="btn-orange font-body rounded-full px-8 sm:px-10 py-4 sm:py-4 text-[17px] sm:text-[18px] mt-8 sm:mt-10">
+          <svg class="icon-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Appeler le 04 65 84 81 73
+        </a>
+
+        <p class="font-body text-[13px] sm:text-[14px] mt-5 sm:mt-6 max-w-md mx-auto" style="color: rgba(26, 47, 80, 0.7); font-weight: 500;">
+          Devis gratuit · Prix fixe annoncé · Sans dégât sur la porte
+        </p>
+      </section>
+    </div>
+
+    <!-- ============ URGENCE ============ -->
+    <section class="bg-dark py-16 sm:py-24 lg:py-28 px-5 sm:px-6 relative">
+      <span class="section-marker on-dark">§ 01 — urgence</span>
+      <div class="max-w-5xl mx-auto text-center">
+        <p class="font-body text-[11px] sm:text-[13px] tracking-[0.22em] uppercase mb-4" style="color:#F37021; font-weight:700;">URGENCE 24H/24 · 7J/7</p>
+        <h2 class="font-display text-[34px] sm:text-5xl lg:text-6xl" style="color:#fff; font-weight:600; letter-spacing:-0.03em; line-height:1.05;">
+          Une porte qui résiste ? <br class="hidden sm:block" /><span class="font-serif italic" style="font-weight:400;">On arrive.</span>
+        </h2>
+        <p class="font-body text-base sm:text-lg lg:text-xl mt-4 sm:mt-5 max-w-2xl mx-auto" style="color:#a1a1a6; line-height:1.5;">
+          Porte claquée, clé cassée, serrure bloquée. On intervient rapidement partout en Haute-Savoie, jour et nuit, week-ends et jours fériés compris.
+        </p>
+
+        <a href="tel:0465848173" class="btn-orange font-body rounded-full px-8 sm:px-10 py-4 text-[17px] sm:text-[18px] mt-8 sm:mt-10 inline-flex">
+          <svg class="icon-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Appeler le 04 65 84 81 73
+        </a>
+
+        <p class="font-body text-[13px] mt-5" style="color:#a1a1a6;">
+          On répond directement. Diagnostic et prix au téléphone.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============ ARTISAN (avec "on") ============ -->
+    <section id="artisan" class="relative grain px-5 sm:px-6 py-16 sm:py-24 lg:py-32 overflow-hidden" style="background:#FAF7F2;">
+      <span class="section-marker">§ 02 — l'équipe</span>
+
+      <div class="max-w-7xl mx-auto grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+        <div class="lg:col-span-7 lg:order-2">
+          <p class="font-body text-[11px] sm:text-[13px] tracking-[0.22em] uppercase mb-4 sm:mb-5" style="color:#6e6e73; font-weight:600;">ALBERT SERRURIER</p>
+
+          <h2 class="font-display text-[34px] sm:text-5xl md:text-6xl" style="color:#1A2F50; font-weight:600; letter-spacing:-0.03em; line-height:1.05;">
+            15 ans <span class="font-serif italic" style="font-weight:400;">à votre service.</span>
+          </h2>
+
+          <p class="font-body text-base sm:text-lg mt-5 sm:mt-6 max-w-xl" style="color:#1A2F50; line-height:1.55; font-weight:400;">
+            Albert Serrurier est une entreprise locale spécialisée en serrurerie. On intervient rapidement partout en Haute-Savoie pour tout dépannage, ouverture de porte ou renforcement de sécurité.
+          </p>
+
+          <p class="font-body text-base sm:text-lg mt-4 max-w-xl" style="color:#6e6e73; line-height:1.55;">
+            Notre engagement est simple : un service fiable, des tarifs annoncés à l'avance, et le respect de chaque porte sur laquelle on intervient. C'est ce qui nous a permis de construire une relation de confiance avec nos clients, particuliers comme professionnels.
+          </p>
+
+          <div class="mt-7 sm:mt-8">
+            <span class="signature">— L'équipe Albert Serrurier</span>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5 lg:order-1">
+          <div class="albert-portrait"></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="ornament" style="background:#fff;">
+      <span class="ornament-line"></span><span class="ornament-dot"></span><span class="ornament-line"></span>
+    </div>
+
+    <!-- ============ SERVICES (3 grands métiers) ============ -->
+    <section id="services" class="py-16 sm:py-24 lg:py-32 px-5 sm:px-6 bg-white relative">
+      <span class="section-marker">§ 03 — services</span>
+
+      <div class="max-w-6xl mx-auto">
+        <div class="max-w-3xl mb-10 sm:mb-16">
+          <p class="font-body text-[11px] sm:text-[13px] tracking-[0.22em] uppercase mb-4" style="color:#6e6e73; font-weight:600;">NOS SERVICES</p>
+          <h2 class="font-display text-[34px] sm:text-5xl lg:text-6xl" style="color:#1A2F50; font-weight:600; letter-spacing:-0.03em; line-height:1.05;">
+            Trois métiers. <span class="font-serif italic" style="font-weight:400;">Une seule équipe.</span>
+          </h2>
+        </div>
+
+        <article class="service-row grid lg:grid-cols-12 gap-6 lg:gap-12 items-start">
+          <div class="lg:col-span-3">
+            <div class="service-num">01</div>
+            <p class="font-body text-[11px] sm:text-[13px] tracking-[0.22em] uppercase mt-3" style="color:#1A2F50; font-weight:700;">Ouverture de porte</p>
+          </div>
+          <div class="lg:col-span-9">
+            <h3 class="font-display text-2xl sm:text-3xl lg:text-4xl" style="color:#1A2F50; font-weight:600; letter-spacing:-0.025em; line-height:1.15;">
+              On ouvre votre porte. <span class="font-serif italic" style="font-weight:400;">Sans dégât.</span>
+            </h3>
+            <p class="font-body text-base sm:text-lg mt-4 sm:mt-5 max-w-2xl" style="color:#6e6e73; line-height:1.55;">
+              Porte claquée, verrouillée ou bloquée. On intervient rapidement avec des outils de précision pour préserver votre porte et votre serrure.
+            </p>
+            <ul class="mt-5 sm:mt-6 space-y-2 max-w-2xl">
+              <li class="font-body text-[15px] flex items-start gap-3" style="color:#1A2F50;"><span style="color:#1A2F50; opacity:0.5;">→</span> Intervention rapide, jour et nuit</li>
+              <li class="font-body text-[15px] flex items-start gap-3" style="color:#1A2F50;"><span style="color:#1A2F50; opacity:0.5;">→</span> Aucune marque, aucune rayure sur la porte</li>
+              <li class="font-body text-[15px] flex items-start gap-3" style="color:#1A2F50;"><span style="color:#1A2F50; opacity:0.5;">→</span> Le perçage seulement en dernier recours</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="service-row grid lg:grid-cols-12 gap-6 lg:gap-12 items-start">
+          <div class="lg:col-span-3">
+            <div class="service-num">02</div>
+            <p class="font-body text-[11px] sm:text-[13px] tracking-[0.22em] uppercase mt-3" style="color:#1A2F50; font-weight:700;">Réparation de serrure</p>
+          </div>
+          <div class="lg:col-span-9">
+            <h3 class="font-display text-2xl sm:text-3xl lg:text-4xl" style="color:#1A2F50; font-weight:600; letter-spacing:-0.025em; line-height:1.15;">
+              On répare votre serrure. <span class="font-serif italic" style="font-weight:400;">Soigneusement.</span>
+            </h3>
+            <p class="font-body text-base sm:text-lg mt-4 sm:mt-5 max-w-2xl" style="color:#6e6e73; line-height:1.55;">
+              Cylindre forcé, mécanisme bloqué, clé cassée à l'intérieur. On diagnostique, on démonte et on remet en état pour que vous retrouviez sécurité et confort.
+            </p>
+            <ul class="mt-5 sm:mt-6 space-y-2 max-w-2xl">
+              <li class="font-body text-[15px] flex items-start gap-3" style="color:#1A2F50;"><span style="color:#1A2F50; opacity:0.5;">→</span> Diagnostic clair avant tout démontage</li>
+              <li class="font-body text-[15px] flex items-start gap-3" style="color:#1A2F50;"><span style="color:#1A2F50; opacity:0.5;">→</span> Pièces d'origine ou compatibles certifiées</li>
+              <li class="font-body text-[15px] flex items-start gap-3" style="color:#1A2F50;"><span style="color:#1A2F50; opacity:0.5;">→</span> Garantie sur la réparation</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="service-row grid lg:grid-cols-12 gap-6 lg:gap-12 items-start">
+          <div class="lg:col-span-3">
+            <div class="service-num">03</div>
+            <p class="font-body text-[11px] sm:text-[13px] tracking-[0.22em] uppercase mt-3" style="color:#1A2F50; font-weight:700;">Installation de serrure</p>
+          </div>
+          <div class="lg:col-span-9">
+            <h3 class="font-display text-2xl sm:text-3xl lg:text-4xl" style="color:#1A2F50; font-weight:600; letter-spacing:-0.025em; line-height:1.15;">
+              On installe votre nouvelle serrure. <span class="font-serif italic" style="font-weight:400;">Sur-mesure.</span>
+            </h3>
+            <p class="font-body text-base sm:text-lg mt-4 sm:mt-5 max-w-2xl" style="color:#6e6e73; line-height:1.55;">
+              Pose de serrures neuves, classiques ou haute sécurité, adaptées à votre porte et à votre niveau d'exigence. On vous conseille selon votre logement, votre budget et vos besoins.
+            </p>
+            <ul class="mt-5 sm:mt-6 space-y-2 max-w-2xl">
+              <li class="font-body text-[15px] flex items-start gap-3" style="color:#1A2F50;"><span style="color:#1A2F50; opacity:0.5;">→</span> Serrures standards et haute sécurité</li>
+              <li class="font-body text-[15px] flex items-start gap-3" style="color:#1A2F50;"><span style="color:#1A2F50; opacity:0.5;">→</span> Pose précise, ajustement millimétrique</li>
+              <li class="font-body text-[15px] flex items-start gap-3" style="color:#1A2F50;"><span style="color:#1A2F50; opacity:0.5;">→</span> Conseil personnalisé selon votre besoin</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ HERO OBJECT ============ -->
+    <section class="px-0 sm:px-6 py-12 sm:py-20 bg-white">
+      <div class="max-w-7xl mx-auto">
+        <div class="hero-object"></div>
+      </div>
+    </section>
+
+    <!-- ============ PRESTATIONS DÉTAILLÉES ============ -->
+    <section id="prestations" class="py-16 sm:py-24 lg:py-32 px-5 sm:px-6 relative" style="background:#FAF7F2;">
+      <span class="section-marker">§ 04 — prestations</span>
+
+      <div class="max-w-7xl mx-auto">
+        <div class="max-w-3xl mb-10 sm:mb-14">
+          <p class="font-body text-[11px] sm:text-[13px] tracking-[0.22em] uppercase mb-4" style="color:#6e6e73; font-weight:600;">PRESTATIONS DÉTAILLÉES</p>
+          <h2 class="font-display text-[34px] sm:text-5xl lg:text-6xl" style="color:#1A2F50; font-weight:600; letter-spacing:-0.03em; line-height:1.05;">
+            Tout ce qu'on fait <span class="font-serif italic" style="font-weight:400;">au quotidien.</span>
+          </h2>
+          <p class="font-body text-base sm:text-lg mt-4 sm:mt-5 max-w-2xl" style="color:#6e6e73; line-height:1.5;">
+            Si votre besoin n'est pas listé, appelez-nous. On vous dit en deux minutes si on peut intervenir.
+          </p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
+          <div class="detail-card">
+            <span class="detail-card-icon">01</span>
+            <h3 class="font-display text-lg sm:text-xl mt-4 sm:mt-5" style="color:#1A2F50; font-weight:600;">Porte claquée</h3>
+            <p class="font-body text-[14px] sm:text-[15px] mt-2" style="color:#6e6e73; line-height:1.5;">
+              Vous êtes resté dehors clés à l'intérieur. On vous ouvre sans abîmer la porte ni la serrure.
+            </p>
+          </div>
+
+          <div class="detail-card">
+            <span class="detail-card-icon">02</span>
+            <h3 class="font-display text-lg sm:text-xl mt-4 sm:mt-5" style="color:#1A2F50; font-weight:600;">Porte verrouillée</h3>
+            <p class="font-body text-[14px] sm:text-[15px] mt-2" style="color:#6e6e73; line-height:1.5;">
+              Clés perdues ou volées. On déverrouille proprement et on remplace le cylindre si besoin.
+            </p>
+          </div>
+
+          <div class="detail-card">
+            <span class="detail-card-icon">03</span>
+            <h3 class="font-display text-lg sm:text-xl mt-4 sm:mt-5" style="color:#1A2F50; font-weight:600;">Clé cassée dans la serrure</h3>
+            <p class="font-body text-[14px] sm:text-[15px] mt-2" style="color:#6e6e73; line-height:1.5;">
+              Extraction du morceau bloqué et remise en service du mécanisme.
+            </p>
+          </div>
+
+          <div class="detail-card">
+            <span class="detail-card-icon">04</span>
+            <h3 class="font-display text-lg sm:text-xl mt-4 sm:mt-5" style="color:#1A2F50; font-weight:600;">Cylindre forcé</h3>
+            <p class="font-body text-[14px] sm:text-[15px] mt-2" style="color:#6e6e73; line-height:1.5;">
+              Tentative d'effraction ou cylindre cassé : remplacement immédiat pour sécuriser à nouveau.
+            </p>
+          </div>
+
+          <div class="detail-card">
+            <span class="detail-card-icon">05</span>
+            <h3 class="font-display text-lg sm:text-xl mt-4 sm:mt-5" style="color:#1A2F50; font-weight:600;">Serrure bloquée</h3>
+            <p class="font-body text-[14px] sm:text-[15px] mt-2" style="color:#6e6e73; line-height:1.5;">
+              Mécanisme grippé ou hors d'usage : diagnostic, démontage et remise en état.
+            </p>
+          </div>
+
+          <div class="detail-card">
+            <span class="detail-card-icon">06</span>
+            <h3 class="font-display text-lg sm:text-xl mt-4 sm:mt-5" style="color:#1A2F50; font-weight:600;">Changement de serrure</h3>
+            <p class="font-body text-[14px] sm:text-[15px] mt-2" style="color:#6e6e73; line-height:1.5;">
+              Remplacement complet par une serrure neuve, standard ou haute sécurité.
+            </p>
+          </div>
+
+          <div class="detail-card">
+            <span class="detail-card-icon">07</span>
+            <h3 class="font-display text-lg sm:text-xl mt-4 sm:mt-5" style="color:#1A2F50; font-weight:600;">Pose de serrure haute sécurité</h3>
+            <p class="font-body text-[14px] sm:text-[15px] mt-2" style="color:#6e6e73; line-height:1.5;">
+              Renforcement de votre porte avec une serrure certifiée pour mieux protéger votre logement.
+            </p>
+          </div>
+
+          <div class="detail-card">
+            <span class="detail-card-icon">08</span>
+            <h3 class="font-display text-lg sm:text-xl mt-4 sm:mt-5" style="color:#1A2F50; font-weight:600;">Reproduction de clés</h3>
+            <p class="font-body text-[14px] sm:text-[15px] mt-2" style="color:#6e6e73; line-height:1.5;">
+              Copie de clés simples ou de sécurité, sur place ou après dépannage.
+            </p>
+          </div>
+
+          <div class="detail-card">
+            <span class="detail-card-icon">09</span>
+            <h3 class="font-display text-lg sm:text-xl mt-4 sm:mt-5" style="color:#1A2F50; font-weight:600;">Intervention après cambriolage</h3>
+            <p class="font-body text-[14px] sm:text-[15px] mt-2" style="color:#6e6e73; line-height:1.5;">
+              Sécurisation immédiate de votre porte, conseils sur le renforcement, prise en charge par l'assurance.
+            </p>
+          </div>
+        </div>
+
+        <div class="text-center mt-10 sm:mt-12">
+          <a href="tel:0465848173" class="btn-orange font-body rounded-full px-8 py-4 text-[16px] sm:text-[17px] inline-flex">
+            <svg class="icon-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Appeler le 04 65 84 81 73
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ BIG "15" ============ -->
+    <section class="big-stat-shell relative grain px-5 sm:px-6 py-24 sm:py-32 lg:py-40 overflow-hidden bg-white">
+      <span class="big-15">15</span>
+
+      <div class="max-w-5xl mx-auto relative z-10 text-center">
+        <p class="font-body text-[11px] sm:text-[13px] tracking-[0.22em] uppercase mb-5 sm:mb-6" style="color:#6e6e73; font-weight:600;">EXPÉRIENCE</p>
+        <h2 class="font-display text-[40px] sm:text-7xl md:text-8xl" style="color:#1A2F50; font-weight:600; letter-spacing:-0.035em; line-height:0.95;">
+          <span class="font-serif italic" style="font-weight:400;">15 ans</span>
+          <br/>à votre service.
+        </h2>
+        <p class="font-body text-base sm:text-lg lg:text-xl mt-6 sm:mt-8 max-w-2xl mx-auto" style="color:#1A2F50; line-height:1.5;">
+          15 ans d'expérience sur le terrain. Une expertise solide qui garantit des interventions efficaces, soignées et adaptées à chaque situation.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============ ENGAGEMENTS ============ -->
+    <section id="engagements" class="py-16 sm:py-24 lg:py-32 px-5 sm:px-6 relative" style="background:#FAF7F2;">
+      <span class="section-marker">§ 05 — engagements</span>
+
+      <div class="max-w-7xl mx-auto">
+        <div class="max-w-3xl mb-10 sm:mb-16">
+          <p class="font-body text-[11px] sm:text-[13px] tracking-[0.22em] uppercase mb-4" style="color:#6e6e73; font-weight:600;">POURQUOI NOUS</p>
+          <h2 class="font-display text-[34px] sm:text-5xl lg:text-6xl" style="color:#1A2F50; font-weight:600; letter-spacing:-0.03em; line-height:1.05;">
+            Six promesses. <span class="font-serif italic" style="font-weight:400;">Aucune surprise.</span>
+          </h2>
+          <p class="font-body text-base sm:text-lg lg:text-xl mt-4 sm:mt-5" style="color:#6e6e73; line-height:1.5;">
+            Ce qu'on dit avant l'intervention. Ce qu'on tient après.
+          </p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 grid-hairline rounded-2xl overflow-hidden" style="border: 1px solid rgba(26, 47, 80, 0.08);">
+          <div class="bg-white p-6 sm:p-8 lg:p-10">
+            <span class="font-display text-4xl sm:text-5xl" style="color:#1A2F50; font-weight:600; letter-spacing:-0.03em;">01</span>
+            <h3 class="font-display text-lg sm:text-xl mt-5 sm:mt-6" style="color:#1A2F50; font-weight:600;">Devis gratuit</h3>
+            <p class="font-body text-[14px] sm:text-[15px] mt-2" style="color:#6e6e73; line-height:1.5;">Estimation claire et sans engagement avant chaque intervention.</p>
+          </div>
+
+          <div class="bg-white p-6 sm:p-8 lg:p-10">
+            <span class="font-display text-4xl sm:text-5xl" style="color:#1A2F50; font-weight:600; letter-spacing:-0.03em;">02</span>
+            <h3 class="font-display text-lg sm:text-xl mt-5 sm:mt-6" style="color:#1A2F50; font-weight:600;">Prix fixe annoncé</h3>
+            <p class="font-body text-[14px] sm:text-[15px] mt-2" style="color:#6e6e73; line-height:1.5;">Tarifs transparents, communiqués au téléphone, sans frais cachés.</p>
+          </div>
+
+          <div class="bg-white p-6 sm:p-8 lg:p-10">
+            <span class="font-display text-4xl sm:text-5xl" style="color:#1A2F50; font-weight:600; letter-spacing:-0.03em;">03</span>
+            <h3 class="font-display text-lg sm:text-xl mt-5 sm:mt-6" style="color:#1A2F50; font-weight:600;">Sans dégât</h3>
+            <p class="font-body text-[14px] sm:text-[15px] mt-2" style="color:#6e6e73; line-height:1.5;">Techniques d'ouverture qui préservent votre porte et votre serrure.</p>
+          </div>
+
+          <div class="bg-white p-6 sm:p-8 lg:p-10">
+            <span class="font-display text-4xl sm:text-5xl" style="color:#1A2F50; font-weight:600; letter-spacing:-0.03em;">04</span>
+            <h3 class="font-display text-lg sm:text-xl mt-5 sm:mt-6" style="color:#1A2F50; font-weight:600;">24h/24, 7j/7</h3>
+            <p class="font-body text-[14px] sm:text-[15px] mt-2" style="color:#6e6e73; line-height:1.5;">Disponibles jour et nuit, week-ends et jours fériés compris.</p>
+          </div>
+
+          <div class="bg-white p-6 sm:p-8 lg:p-10">
+            <span class="font-display text-4xl sm:text-5xl" style="color:#1A2F50; font-weight:600; letter-spacing:-0.03em;">05</span>
+            <h3 class="font-display text-lg sm:text-xl mt-5 sm:mt-6" style="color:#1A2F50; font-weight:600;">Toutes assurances</h3>
+            <p class="font-body text-[14px] sm:text-[15px] mt-2" style="color:#6e6e73; line-height:1.5;">On est agréés par toutes les compagnies d'assurance.</p>
+          </div>
+
+          <div class="bg-white p-6 sm:p-8 lg:p-10">
+            <span class="font-display text-4xl sm:text-5xl" style="color:#1A2F50; font-weight:600; letter-spacing:-0.03em;">06</span>
+            <h3 class="font-display text-lg sm:text-xl mt-5 sm:mt-6" style="color:#1A2F50; font-weight:600;">Label 2020</h3>
+            <p class="font-body text-[14px] sm:text-[15px] mt-2" style="color:#6e6e73; line-height:1.5;">Serruriers de France — la référence du métier reconnue.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PROCESS ============ -->
+    <section id="process" class="py-16 sm:py-24 lg:py-32 px-5 sm:px-6 relative" style="background:#f5f5f7;">
+      <span class="section-marker">§ 06 — comment ça se passe</span>
+
+      <div class="max-w-5xl mx-auto">
+        <div class="mb-10 sm:mb-16">
+          <p class="font-body text-[11px] sm:text-[13px] tracking-[0.22em] uppercase mb-4" style="color:#6e6e73; font-weight:600;">COMMENT ÇA SE PASSE</p>
+          <h2 class="font-display text-[34px] sm:text-5xl lg:text-6xl max-w-2xl" style="color:#1A2F50; font-weight:600; letter-spacing:-0.03em; line-height:1.05;">
+            Une intervention. <span class="font-serif italic" style="font-weight:400;">En quatre temps.</span>
+          </h2>
+        </div>
+
+        <div class="relative">
+          <div class="absolute left-[18px] sm:left-7 top-3 bottom-3 w-px" style="background:rgba(26, 47, 80, 0.15);"></div>
+
+          <div class="relative pl-12 sm:pl-24 pb-10 sm:pb-12">
+            <span class="absolute left-0 top-0 flex items-center justify-center w-9 h-9 sm:w-14 sm:h-14 rounded-full font-display text-xs sm:text-lg" style="background:#1A2F50; color:#fff; font-weight:600;">01</span>
+            <h3 class="font-display text-xl sm:text-2xl lg:text-3xl" style="color:#1A2F50; font-weight:600; letter-spacing:-0.02em;">Vous appelez</h3>
+            <p class="font-body text-[15px] sm:text-base lg:text-lg mt-2 max-w-xl" style="color:#6e6e73; line-height:1.55;">
+              On décroche directement. Vous décrivez la situation, on évalue immédiatement et on annonce un délai d'arrivée précis.
+            </p>
+          </div>
+
+          <div class="relative pl-12 sm:pl-24 pb-10 sm:pb-12">
+            <span class="absolute left-0 top-0 flex items-center justify-center w-9 h-9 sm:w-14 sm:h-14 rounded-full font-display text-xs sm:text-lg" style="background:#1A2F50; color:#fff; font-weight:600;">02</span>
+            <h3 class="font-display text-xl sm:text-2xl lg:text-3xl" style="color:#1A2F50; font-weight:600; letter-spacing:-0.02em;">On annonce le prix</h3>
+            <p class="font-body text-[15px] sm:text-base lg:text-lg mt-2 max-w-xl" style="color:#6e6e73; line-height:1.55;">
+              Prix fixe communiqué au téléphone avant le moindre déplacement. Vous validez, ou non — sans frais, sans pression.
+            </p>
+          </div>
+
+          <div class="relative pl-12 sm:pl-24 pb-10 sm:pb-12">
+            <span class="absolute left-0 top-0 flex items-center justify-center w-9 h-9 sm:w-14 sm:h-14 rounded-full font-display text-xs sm:text-lg" style="background:#1A2F50; color:#fff; font-weight:600;">03</span>
+            <h3 class="font-display text-xl sm:text-2xl lg:text-3xl" style="color:#1A2F50; font-weight:600; letter-spacing:-0.02em;">On intervient</h3>
+            <p class="font-body text-[15px] sm:text-base lg:text-lg mt-2 max-w-xl" style="color:#6e6e73; line-height:1.55;">
+              On arrive rapidement sur place. Sans dégât, sans surprise. Charte d'engagement signée avant le premier outil sorti.
+            </p>
+          </div>
+
+          <div class="relative pl-12 sm:pl-24">
+            <span class="absolute left-0 top-0 flex items-center justify-center w-9 h-9 sm:w-14 sm:h-14 rounded-full font-display text-xs sm:text-lg" style="background:#0a0a0a; color:#fff; font-weight:600;">04</span>
+            <h3 class="font-display text-xl sm:text-2xl lg:text-3xl" style="color:#1A2F50; font-weight:600; letter-spacing:-0.02em;">Vous rentrez</h3>
+            <p class="font-body text-[15px] sm:text-base lg:text-lg mt-2 max-w-xl" style="color:#6e6e73; line-height:1.55;">
+              Garantie posée, facture détaillée, prise en charge par l'assurance si besoin.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ZONE D'INTERVENTION ============ -->
+    <section id="zone" class="py-16 sm:py-24 lg:py-32 px-5 sm:px-6 relative bg-white">
+      <span class="section-marker">§ 07 — zone</span>
+
+      <div class="max-w-7xl mx-auto grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+        <div class="lg:col-span-5">
+          <p class="font-body text-[11px] sm:text-[13px] tracking-[0.22em] uppercase mb-4" style="color:#6e6e73; font-weight:600;">ZONE D'INTERVENTION</p>
+          <h2 class="font-display text-[34px] sm:text-5xl lg:text-6xl" style="color:#1A2F50; font-weight:600; letter-spacing:-0.03em; line-height:1.05;">
+            Partout en <span class="font-serif italic" style="font-weight:400;">Haute-Savoie.</span>
+          </h2>
+          <p class="font-body text-base sm:text-lg mt-5 sm:mt-6 max-w-md" style="color:#6e6e73; line-height:1.55;">
+            On intervient dans toute la Haute-Savoie : Annecy, Annemasse, Thonon-les-Bains, Évian-les-Bains, Cluses, Sallanches, Bonneville, La Roche-sur-Foron, Saint-Julien-en-Genevois et toutes les communes alentour.
+          </p>
+
+          <div class="mt-7 sm:mt-8">
+            <a href="tel:0465848173" class="btn-orange font-body rounded-full px-7 py-3.5 text-[16px] inline-flex">
+              <svg class="icon-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              Appeler le 04 65 84 81 73
+            </a>
+            <p class="font-body text-[13px] mt-3" style="color:#6e6e73;">
+              Vérifiez la disponibilité dans votre commune en un appel.
+            </p>
+          </div>
+        </div>
+
+        <div class="lg:col-span-7 flex justify-center -mx-2 sm:mx-0">
+          <svg class="france-map" viewBox="0 0 500 480" xmlns="http://www.w3.org/2000/svg" style="max-width: 560px;">
+            <path class="map-zone"
+              d="M 120 80 L 160 60 L 220 65 L 280 55 L 340 70 L 380 95 L 420 130
+                 L 440 175 L 445 230 L 430 285 L 420 320 L 410 360 L 380 395
+                 L 350 420 L 310 440 L 260 445 L 220 440 L 175 425
+                 L 130 395 L 100 355 L 80 305 L 75 250 L 80 200 L 95 145 L 110 105 Z"
+            />
+            <path d="M 250 75 L 250 440" stroke="rgba(26, 47, 80, 0.08)" stroke-width="0.5" fill="none" stroke-dasharray="2 4"/>
+            <path d="M 100 250 L 440 250" stroke="rgba(26, 47, 80, 0.08)" stroke-width="0.5" fill="none" stroke-dasharray="2 4"/>
+
+            <g transform="translate(370, 230)">
+              <circle class="map-marker-pulse" cx="0" cy="0" r="8"/>
+              <circle cx="0" cy="0" r="9" fill="#F37021"/>
+              <circle cx="0" cy="0" r="2.5" fill="#fff"/>
+              <text x="0" y="-22" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="14" font-weight="600" fill="#1A2F50">Haute-Savoie</text>
+              <text x="0" y="32" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="11" fill="#6e6e73" letter-spacing="0.5">04 65 84 81 73</text>
+            </g>
+
+            <g transform="translate(60, 410)" opacity="0.3">
+              <circle cx="0" cy="0" r="14" fill="none" stroke="#1A2F50" stroke-width="0.5"/>
+              <line x1="0" y1="-12" x2="0" y2="12" stroke="#1A2F50" stroke-width="0.5"/>
+              <line x1="-12" y1="0" x2="12" y2="0" stroke="#1A2F50" stroke-width="0.5"/>
+              <text x="0" y="-16" text-anchor="middle" font-family="serif" font-size="9" fill="#1A2F50" font-style="italic">N</text>
+            </g>
+
+            <text x="250" y="465" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="12" fill="#1A2F50" opacity="0.3" letter-spacing="2">— FRANCE —</text>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section class="py-16 sm:py-24 lg:py-32 px-5 sm:px-6 relative" style="background:#FAF7F2;">
+      <span class="section-marker">§ 08 — questions</span>
+
+      <div class="max-w-4xl mx-auto">
+        <div class="mb-8 sm:mb-12">
+          <p class="font-body text-[11px] sm:text-[13px] tracking-[0.22em] uppercase mb-4" style="color:#6e6e73; font-weight:600;">QUESTIONS FRÉQUENTES</p>
+          <h2 class="font-display text-[34px] sm:text-5xl lg:text-6xl" style="color:#1A2F50; font-weight:600; letter-spacing:-0.03em; line-height:1.05;">
+            Tout ce que <span class="font-serif italic" style="font-weight:400;">vous voulez savoir.</span>
+          </h2>
+        </div>
+
+        <div class="">
+          <details>
+            <summary>En combien de temps intervenez-vous ?</summary>
+            <div>On intervient rapidement partout en Haute-Savoie. Pour une urgence pure (porte claquée, enfant à l'intérieur, médication oubliée), on priorise l'intervention. Le délai exact est annoncé au téléphone après description de votre situation.</div>
+          </details>
+          <details>
+            <summary>Quel est le tarif d'une intervention ?</summary>
+            <div>Le prix dépend du type de serrure et de la nature de l'intervention. Il est annoncé au téléphone, fixe, sans frais cachés. Vous validez avant tout déplacement.</div>
+          </details>
+          <details>
+            <summary>Travaillez-vous avec ma compagnie d'assurance ?</summary>
+            <div>Oui, on est agréés par toutes les compagnies d'assurance. On prend en charge les démarches et la facturation directe quand votre contrat le permet.</div>
+          </details>
+          <details>
+            <summary>Pouvez-vous ouvrir sans casser la serrure ?</summary>
+            <div>Dans la grande majorité des cas, oui. On utilise des techniques d'ouverture fines qui préservent la porte et la serrure. Le perçage est un dernier recours, jamais un point de départ.</div>
+          </details>
+          <details>
+            <summary>Quels types de serrures installez-vous ?</summary>
+            <div>Tous : standard, haute sécurité, A2P 1/2/3 étoiles, multipoints. On vous conseille selon votre porte, votre quartier et votre niveau de sécurité souhaité.</div>
+          </details>
+          <details>
+            <summary>Intervenez-vous la nuit, les week-ends et jours fériés ?</summary>
+            <div>Oui, on est disponibles 24h/24 et 7j/7. Aucun supplément abusif : le tarif reste cohérent, simplement majoré selon la grille publique des interventions de nuit.</div>
+          </details>
+          <details>
+            <summary>Êtes-vous certifiés ?</summary>
+            <div>Albert Serrurier est titulaire du label Serruriers de France 2020, signe d'une charte qualité stricte. 15 ans d'exercice continu en Haute-Savoie.</div>
+          </details>
+          <details>
+            <summary>Dans quelles communes intervenez-vous ?</summary>
+            <div>Partout en Haute-Savoie : Annecy, Annemasse, Thonon-les-Bains, Évian-les-Bains, Cluses, Sallanches, Bonneville, La Roche-sur-Foron, Saint-Julien-en-Genevois et toutes les communes alentour. Si vous avez un doute, appelez-nous, on vous le dit en deux minutes.</div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section id="contact" class="contact-section py-16 sm:py-24 lg:py-32 px-5 sm:px-6">
+      <div class="contact-bg"></div>
+      <span class="section-marker on-dark">§ 09 — contact</span>
+
+      <div class="contact-content max-w-4xl mx-auto">
+        <div class="text-center">
+          <p class="font-body text-[11px] sm:text-[13px] tracking-[0.22em] uppercase mb-4" style="color:#F37021; font-weight:700;">CONTACT</p>
+          <h2 class="font-display text-[34px] sm:text-5xl lg:text-6xl" style="color:#fff; font-weight:600; letter-spacing:-0.03em; line-height:1.05;">
+            On répond. <span class="font-serif italic" style="font-weight:400;">Tout de suite.</span>
+          </h2>
+          <p class="font-body text-base sm:text-lg lg:text-xl mt-4 sm:mt-5 max-w-xl mx-auto" style="color:#a1a1a6; line-height:1.5;">
+            Le plus rapide, c'est l'appel. On décroche directement, on évalue votre situation et on vous donne un prix au téléphone.
+          </p>
+        </div>
+
+        <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-7 sm:p-10 lg:p-12 mt-10 sm:mt-12 max-w-2xl mx-auto text-center">
+          <p class="font-body text-[11px] sm:text-[13px] tracking-[0.22em] uppercase" style="color:#F37021; font-weight:700;">URGENCE 24H/24</p>
+          <p class="font-display text-3xl sm:text-5xl lg:text-6xl mt-3 sm:mt-4" style="color:#fff; font-weight:600; letter-spacing:-0.02em;">
+            04 65 84 81 73
+          </p>
+          <a href="tel:0465848173" class="btn-orange font-body rounded-full px-8 py-4 text-[17px] sm:text-[18px] mt-7 sm:mt-9 inline-flex">
+            <svg class="icon-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Appeler maintenant
+          </a>
+          <p class="font-body text-[13px] mt-5" style="color:#a1a1a6;">
+            Disponibles jour et nuit, week-ends et jours fériés
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="bg-dark px-5 sm:px-6 py-10 sm:py-14 border-t border-white/5">
+      <div class="max-w-7xl mx-auto">
+        <div class="flex flex-col md:flex-row justify-between gap-8 sm:gap-10 items-start">
+          <div>
+            <img src="./logo.png" alt="Albert Serrurier" class="h-14 sm:h-16 w-auto" />
+            <p class="font-body text-[11px] sm:text-[13px] mt-3 sm:mt-4 tracking-[0.18em] uppercase" style="color:#a1a1a6; font-weight:600;">Dépannage · Sécurité · Confiance</p>
+            <p class="font-body text-sm mt-2 sm:mt-3 max-w-sm" style="color:#6e6e73; line-height:1.5;">
+              Entreprise locale spécialisée en serrurerie en Haute-Savoie. Dépannage, ouverture de porte et renforcement de sécurité, 24h/24.
+            </p>
+          </div>
+
+          <div>
+            <p class="font-body text-[11px] sm:text-[13px] tracking-[0.22em] uppercase" style="color:#F37021; font-weight:700;">URGENCE 24H/24</p>
+            <a href="tel:0465848173" class="font-display text-2xl sm:text-3xl mt-2 sm:mt-3 block" style="color:#fff; font-weight:600;">04 65 84 81 73</a>
+            <p class="font-body text-[13px] mt-1" style="color:#6e6e73;">Haute-Savoie · 7j/7</p>
+            <a href="tel:0465848173" class="btn-orange font-body rounded-full px-5 py-2.5 text-[14px] mt-4 inline-flex">
+              <svg class="icon-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              Appeler
+            </a>
+          </div>
+        </div>
+
+        <div class="mt-10 sm:mt-12 pt-6 sm:pt-8 border-t border-white/5 flex flex-col sm:flex-row justify-between gap-3 sm:gap-4">
+          <p class="font-body text-[11px] sm:text-[12px]" style="color:#6e6e73">© 2026 Albert Serrurier. Tous droits réservés.</p>
+          <div class="flex gap-5 sm:gap-6">
+            <a href="#" class="font-body text-[11px] sm:text-[12px] hover:opacity-70" style="color:#6e6e73">Mentions légales</a>
+            <a href="#" class="font-body text-[11px] sm:text-[12px] hover:opacity-70" style="color:#6e6e73">CGV</a>
+            <a href="#" class="font-body text-[11px] sm:text-[12px] hover:opacity-70" style="color:#6e6e73">Confidentialité</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ============ FAB sticky téléphone (clair, direct, pour 40-50 ans) ============ -->
+    <div id="fabCall" class="fab-call">
+      <a href="tel:0465848173">
+        <span class="fab-pulse-dot"></span>
+        <svg class="fab-phone-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Appeler le 04 65 84 81 73
+      </a>
+    </div>
+
+    <script>
+      /* Sticky nav blur */
+      (function () {
+        const nav = document.getElementById('topNav');
+        function onScroll() {
+          if (window.scrollY > 30) nav.classList.add('scrolled');
+          else nav.classList.remove('scrolled');
+        }
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+      })();
+
+      /* Mobile menu */
+      (function () {
+        const btn = document.getElementById('mobileMenuBtn');
+        const menu = document.getElementById('mobileMenu');
+        if (!btn || !menu) return;
+        btn.addEventListener('click', () => menu.classList.toggle('open'));
+        menu.querySelectorAll('a').forEach((a) =>
+          a.addEventListener('click', () => menu.classList.remove('open'))
+        );
+      })();
+
+      /* FAB sticky téléphone */
+      (function () {
+        const fab = document.getElementById('fabCall');
+        if (!fab) return;
+        function onScroll() {
+          if (window.scrollY > window.innerHeight * 0.6) fab.classList.add('visible');
+          else fab.classList.remove('visible');
+        }
+        window.addEventListener('scroll', onScroll, { passive: true });
+      })();
+    </script>
+  </body>
+</html>
